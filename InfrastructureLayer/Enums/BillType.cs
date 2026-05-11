@@ -1,4 +1,4 @@
-﻿namespace InfrastructureLayer.Enums
+﻿namespace DomainLayer.Enums
 {
     public enum BillType
     {

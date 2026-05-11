@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Dtos\" />
     <Folder Include="Enums\" />
     <Folder Include="Extensions\" />
     <Folder Include="Services\" />
@@ -15,7 +14,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="jQuery" Version="3.7.1" />
     <PackageReference Include="Telerik.UI.for.AspNet.Core" Version="2023.3.1114" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\InfrastructureLayer\DomainLayer.csproj" />
   </ItemGroup>
 
 </Project>

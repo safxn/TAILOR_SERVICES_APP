@@ -1,11 +1,11 @@
-﻿using InfrastructureLayer.Enums;
+﻿using DomainLayer.Enums;
 using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.Reflection.Metadata;
 using System.Text;
 
-namespace InfrastructureLayer.Models
+namespace DomainLayer.Models
 {
     public class Bill
     {

@@ -1,12 +1,13 @@
-﻿using InfrastructureLayer.Models;
+﻿using DomainLayer.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace InfrastructureLayer.Data
+namespace DomainLayer.Data
 {
     public class AppDbContext : DbContext
     {
-        public DbSet<Bill> Bill { get; set; }
+        public DbSet<Bill> Bills { get; set; }
 
+        public DbSet<Customer> Customers { get; set; }
         public AppDbContext(DbContextOptions<AppDbContext> options)
             : base(options)
         {

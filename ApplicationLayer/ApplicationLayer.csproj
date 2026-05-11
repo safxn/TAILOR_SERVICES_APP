@@ -6,9 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="jQuery" Version="3.7.1" />
-    <PackageReference Include="Telerik.UI.for.AspNet.Core" Version="2023.3.1114" />
-  </ItemGroup>
-
 </Project>

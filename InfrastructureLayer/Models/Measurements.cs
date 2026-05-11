@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace InfrastructureLayer.Models
+namespace DomainLayer.Models
 {
     internal class Measurements
     {
+
     }
 }
