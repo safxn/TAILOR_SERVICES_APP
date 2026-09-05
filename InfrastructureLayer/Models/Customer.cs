@@ -1,50 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.Metrics;
 using System.Text;
 
 namespace DomainLayer.Models
 {
-    public class Customer
+ 
+     public class Customer
     {
         public int Id { get; set; }
 
-        // Basic Details
-        public string FullName { get; set; } = string.Empty;
+        [Required, MaxLength(150)]
+        public string Name { get; set; } = string.Empty;
 
-        public string PhoneNumber { get; set; } = string.Empty;
+        [MaxLength(20)]
+        public string? Phone { get; set; }
 
-        public string? Email { get; set; }
-
-        // Address
+        [MaxLength(250)]
         public string? Address { get; set; }
-
-        // Tailor Specific
-        public string? Gender { get; set; }
-
-        public DateTime? DateOfBirth { get; set; }
-
-        // Measurements
-        public decimal? Chest { get; set; }
-
-        public decimal? Waist { get; set; }
-
-        public decimal? Shoulder { get; set; }
-
-        public decimal? SleeveLength { get; set; }
-
-        public decimal? Neck { get; set; }
-
-        public decimal? Inseam { get; set; }
-
-        // Preferences / Notes
-        public string? FabricPreference { get; set; }
 
         public string? Notes { get; set; }
 
-        // Audit
+        // Who registered this customer (admin or employee)
+        public string CreatedById { get; set; } = string.Empty;
+        public ApplicationUser? CreatedBy { get; set; }
+
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
-        public bool IsActive { get; set; } = true;
+        // Navigation
+        public ICollection<Measurement> Measurements { get; set; } = new List<Measurement>();
+        public ICollection<Order> Orders { get; set; } = new List<Order>();
     }
 }
 

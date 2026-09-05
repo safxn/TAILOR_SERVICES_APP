@@ -1,6 +1,6 @@
 <Solution>
-  <Project Path="ApplicationClass/InfrastructureLayer.csproj" />
+  <Project Path="ApplicationClass/DomainLayer.csproj" />
   <Project Path="ApplicationLayer/ApplicationLayer.csproj" Id="6fd9cbe1-08bb-4cc7-94b3-af46e5fc7b50" />
   <Project Path="D:/Project/TAILOR_SERVICES_APP/TAILOR_SERVICES_APP/TAILOR_SERVICES_APP/TAILOR_SERVICES_APP.csproj" />
-  <Project Path="InfrastructureLayer/DomainLayer.csproj" Id="c5e32e0f-87b0-41d5-8434-610add33fa21" />
+  <Project Path="InfrastructureLayer/InfrastructureLayer.csproj" Id="c5e32e0f-87b0-41d5-8434-610add33fa21" />
 </Solution>

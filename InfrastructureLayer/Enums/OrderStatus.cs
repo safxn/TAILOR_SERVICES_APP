@@ -1,10 +1,11 @@
 ﻿namespace DomainLayer.Enums
 {
-    public enum BillStatus
+    public enum OrderStatus
     {
         Pending,
-        Paid,
-        Overdue,
+        InProgress,
+        Ready,
+        Delivered,
         Cancelled
     }
 }
