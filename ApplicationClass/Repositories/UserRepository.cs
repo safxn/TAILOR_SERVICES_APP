@@ -70,7 +70,7 @@ internal sealed class UserManagementRepository(
 
             user.FullName = dto.FullName;
             user.Email = dto.Email;
-            user.UserName = dto.Email;          // keep username = email
+            user.UserName = dto.Email;        
             user.PhoneNumber = dto.PhoneNumber;
 
             var result = await _userManager.UpdateAsync(user);

@@ -43,5 +43,5 @@ public sealed record UserUpdateDto
 
     public  string? PhoneNumber { get; set; }
 
-    public required string NewPassword { get; set; }  
+    public string? NewPassword { get; set; }  
 }
