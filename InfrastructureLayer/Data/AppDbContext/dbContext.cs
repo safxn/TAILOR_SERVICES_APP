@@ -31,6 +31,16 @@ namespace InfrastructureLayer.Data
                 .HasOne(ep => ep.Permission)
                 .WithMany(p => p.EmployeePermissions)
                 .HasForeignKey(ep => ep.PermissionId);
+            foreach (var fk in modelBuilder.Model.GetEntityTypes()
+            .SelectMany(t => t.GetForeignKeys())
+            .Where(fk => fk.PrincipalEntityType.ClrType == typeof(ApplicationUser)
+              && fk.DeclaringEntityType.ClrType != typeof(EmployeePermission)
+              && !fk.DeclaringEntityType.ClrType.Namespace!.StartsWith("Microsoft.AspNetCore.Identity")
+              && fk.DeleteBehavior == DeleteBehavior.Cascade))
+            {
+                fk.DeleteBehavior = DeleteBehavior.Restrict;
+            }
         }
+
     }
 }
