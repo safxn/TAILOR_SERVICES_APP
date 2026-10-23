@@ -5,22 +5,22 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace DomainLayer.Repositories;
+namespace DomainLayer;
 
-internal sealed class UserManagementRepository(
+internal sealed class UserRepository(
     UserManager<ApplicationUser> userManager,
-    ILogger<UserManagementRepository> logger) : IUserManagementRepository
+    ILogger<UserRepository> logger) : IUserRepository
 {
     private readonly UserManager<ApplicationUser> _userManager = userManager;
-    private readonly ILogger<UserManagementRepository> _logger = logger;
+    private readonly ILogger<UserRepository> _logger = logger;
 
 
-    public async Task<List<UserListDto>> GetAllAsync(CancellationToken ct)
-        => await _userManager.Users
-            .AsNoTracking()
-            .OrderBy(x => x.FullName)
-            .Select(x => new UserListDto(x.Id, x.FullName, x.Email, x.PhoneNumber))
-            .ToListAsync(ct);
+    //// Repository
+    //public async Task<DataSourceResult> GetGridAsync(DataSourceRequest request, CancellationToken ct)
+    //    => await _userManager.Users
+    //        .AsNoTracking()
+    //        .Select(x => new UserGridDto { Id = x.Id, FullName = x.FullName!, Email = x.Email!, PhoneNumber = x.PhoneNumber })
+    //        .ToDataSourceResultAsync(request);
 
     public async Task<OperationResult<UserDetailDto>> GetByIdAsync(string id, CancellationToken ct)
     {
