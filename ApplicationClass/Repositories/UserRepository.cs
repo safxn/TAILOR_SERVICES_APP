@@ -120,7 +120,6 @@ internal sealed class UserRepository(
         }
         catch (DbUpdateException ex)
         {
-            // Restrict FKs (e.g. Customer.CreatedById) block deleting users who own records
             _logger.LogWarning(ex, "Delete user blocked by related records");
             return OperationResult.Fail("This user has related records (customers, orders, etc.) and cannot be deleted.");
         }
