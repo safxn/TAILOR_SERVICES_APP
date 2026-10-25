@@ -5,6 +5,7 @@ using InfrastructureLayer.Seed;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using DomainLayer.Extensions;
 using TAILOR_SERVICES_APP.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -29,6 +30,7 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("ManageCustomers", policy =>
         policy.Requirements.Add(new PermissionRequirement("ManageCustomers")));
 });
+builder.Services.AddDomainLayer(builder.Configuration);
 
 var app = builder.Build();
 

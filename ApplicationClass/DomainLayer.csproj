@@ -15,8 +15,4 @@
 		<ProjectReference Include="..\InfrastructureLayer\InfrastructureLayer.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="Extensions\" />
-	</ItemGroup>
-
 </Project>
