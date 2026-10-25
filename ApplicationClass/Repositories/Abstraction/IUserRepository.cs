@@ -19,5 +19,4 @@ Task<OperationResult> UpdateAsync(UserUpdateDto dto, CancellationToken ct);
 
 Task<OperationResult> DeleteAsync(string id, string currentUserId, CancellationToken ct);
 
-
 }
