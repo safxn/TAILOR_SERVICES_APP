@@ -11,7 +11,7 @@ namespace DomainLayer;
 
 internal sealed class UserRepository(
     UserManager<ApplicationUser> userManager,
-    ILogger<UserRepository> logger) : IUserRepository
+    ILogger<UserRepository> logger) : IUserRepository                           
 {
     private readonly UserManager<ApplicationUser> _userManager = userManager;
     private readonly ILogger<UserRepository> _logger = logger;
