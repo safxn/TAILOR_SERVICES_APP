@@ -10,7 +10,7 @@
 		</a>
 	</app-page-header>
 
-	<app-grid-container title="User List" icon="fi-rr-users-alt">
+	<app-grid-container title="User Management" icon="fi-rr-users-alt">
 		<app-list-grid>
 			<kendo-grid name="grid" on-data-bound="gridDataBound" loader-type="GridLoaderType.Skeleton" auto-bind="false" deferred="true">
 				<datasource type="DataSourceTagHelperType.WebApi" page="0" page-size="@GridConfig.PageSize" server-operation="true">
@@ -18,7 +18,7 @@
 						<model id="id"></model>
 					</schema>
 					<transport>
-						<read url="/api/users" />
+						<read url="/api/users" /> 
 					</transport>
 				</datasource>
 				<columns>
