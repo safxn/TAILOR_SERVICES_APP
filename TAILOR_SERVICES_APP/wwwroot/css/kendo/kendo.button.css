@@ -1,0 +1,479 @@
+/*#region Button Styles */
+
+.k-button {
+	--bs-btn-padding-x: 1.0275rem;
+	--bs-btn-padding-y: 0.475rem;
+	font-family: inherit;
+	font-size: 1rem;
+	display: grid;
+	grid-auto-flow: column;
+	gap: 0.475rem;
+	padding: var(--bs-btn-padding-y) var(--bs-btn-padding-x);
+	border-radius: 0.25rem;
+	text-transform: uppercase;
+	line-height: 1.375rem;
+}
+
+	.k-button:focus {
+		box-shadow: none;
+	}
+
+	.k-button [class*='fa-'] {
+		font-size: 1rem;
+	}
+
+	.k-button[class*='k-button-'] {
+		border: none;
+		box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+	}
+
+		.k-button[class*='k-button-']:before {
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			opacity: 0;
+		}
+
+		.k-button[class*='k-button-'] [class*='fi-'] {
+			font-size: .875rem;
+			display: flex;
+			align-items: center;
+		}
+
+		.k-button[class*='k-button-']:hover {
+			transition: all 250ms ease-out;
+		}
+
+		.k-button[class*='k-button-'].k-disabled {
+			opacity: 0.5 !important;
+		}
+
+			.k-button[class*='k-button-'].k-disabled .k-button-text {
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
+			}
+
+	.k-button[data-status=submit] {
+		pointer-events: none;
+		opacity: 0.5;
+		display: flex;
+		flex-direction: row-reverse;
+	}
+
+		.k-button[data-status=submit] .k-button-text:after {
+			content: "\ee84";
+			font-family: var(--font-family-regular-icon);
+			animation: button-spinner 1s ease-in-out infinite;
+			-webkit-animation: button-spinner 1s ease-in-out infinite;
+		}
+
+	.k-button img {
+		width: 1.5rem;
+		height: 1.5rem;
+	}
+
+@keyframes button-spinner {
+	to {
+		-webkit-transform: rotate(360deg);
+	}
+}
+
+@-webkit-keyframes button-spinner {
+	to {
+		-webkit-transform: rotate(360deg);
+	}
+}
+
+/* Button colour tokens are supplied by theme.base.css (--btn-*-color);
+   these are fallbacks for markup rendered without a theme class. */
+:root {
+	--btn-primary-color: var(--primary, #2563eb);
+	--btn-secondary-color: var(--secondary, #475569);
+	--btn-danger-color: var(--danger, #dc2626);
+	--btn-warning-color: var(--warning, #f59e0b);
+	--btn-success-color: var(--success, #15803d);
+	--btn-info-color: var(--info, #0369a1);
+	--btn-dark-color: var(--surface-inverse, #1e293b);
+	--btn-light-color: var(--surface-2, #f1f5f9);
+	--btn-tertiary-color: var(--tertiary, #0284c7);
+	--btn-text-light: var(--text-on-inverse, #ffffff);
+}
+
+.k-button-primary,
+.k-button-secondary,
+.k-button-tertiary,
+.k-button-warning,
+.k-button-success,
+.k-button-info,
+.k-button-danger,
+.k-button-dark,
+.k-button-light {
+	color: var(--btn-text-light) !important;
+}
+
+/* Text on each solid colour is chosen per theme/mode for AA contrast
+   (--text-on-primary, --on-success …) instead of a fixed light colour. */
+.k-button-primary {
+	background-color: var(--btn-primary-color) !important;
+	border-color: var(--btn-primary-color) !important;
+	color: var(--text-on-primary, var(--btn-text-light)) !important;
+}
+
+.k-button-secondary {
+	background-color: var(--btn-secondary-color) !important;
+	border-color: var(--btn-secondary-color) !important;
+	color: var(--on-secondary, var(--btn-text-light)) !important;
+}
+
+.k-button-tertiary {
+	background-color: var(--btn-tertiary-color) !important;
+	border-color: var(--btn-tertiary-color) !important;
+	color: var(--on-tertiary, var(--btn-text-light)) !important;
+}
+
+.k-button-warning {
+	background-color: var(--btn-warning-color) !important;
+	border-color: var(--btn-warning-color) !important;
+	color: var(--on-warning, var(--btn-text-light)) !important;
+}
+
+.k-button-success {
+	background-color: var(--btn-success-color) !important;
+	border-color: var(--btn-success-color) !important;
+	color: var(--on-success, var(--btn-text-light)) !important;
+}
+
+.k-button-info {
+	background-color: var(--btn-info-color) !important;
+	border-color: var(--btn-info-color) !important;
+	color: var(--on-info, var(--btn-text-light)) !important;
+}
+
+.k-button-danger {
+	background-color: var(--btn-danger-color) !important;
+	border-color: var(--btn-danger-color) !important;
+	color: var(--on-danger, var(--btn-text-light)) !important;
+}
+
+.k-button-dark {
+	background-color: var(--btn-dark-color) !important;
+	border-color: var(--btn-dark-color) !important;
+}
+
+.k-button-light {
+	background-color: var(--btn-light-color) !important;
+	border-color: var(--btn-light-color) !important;
+	color: var(--text) !important;
+}
+
+.k-button-grid {
+	border-width: 1px !important;
+	border-style: solid !important;
+}
+
+	.k-button-primary:hover,
+	.k-button-secondary:hover,
+	.k-button-tertiary:hover,
+	.k-button-warning:hover,
+	.k-button-success:hover,
+	.k-button-info:hover,
+	.k-button-danger:hover,
+	.k-button-dark:hover,
+	.k-button-light:hover,
+	.k-button-grid:hover {
+		filter: brightness(0.9);
+	}
+
+[class*="k-button-outline-"] {
+	background-color: transparent !important;
+}
+
+	[class*="k-button-outline-"]::before {
+		content: none;
+	}
+
+.k-button-outline-primary {
+	color: var(--btn-primary-color) !important;
+	border-color: var(--btn-primary-color) !important;
+}
+
+.k-button-outline-secondary {
+	color: var(--btn-secondary-color) !important;
+	border-color: var(--btn-secondary-color) !important;
+}
+
+.k-button-outline-tertiary {
+	color: var(--btn-tertiary-color) !important;
+	border-color: var(--btn-tertiary-color) !important;
+}
+
+.k-button-outline-warning {
+	color: var(--btn-warning-color) !important;
+	border-color: var(--btn-warning-color) !important;
+}
+
+.k-button-outline-success {
+	color: var(--btn-success-color) !important;
+	border-color: var(--btn-success-color) !important;
+}
+
+.k-button-outline-info {
+	color: var(--btn-info-color) !important;
+	border-color: var(--btn-info-color) !important;
+}
+
+.k-button-outline-danger {
+	color: var(--btn-danger-color) !important;
+	border-color: var(--btn-danger-color) !important;
+}
+
+.k-button-outline-dark {
+	color: var(--btn-dark-color) !important;
+	border-color: var(--btn-dark-color) !important;
+}
+
+.k-button-outline-light {
+	color: var(--btn-light-color) !important;
+	border-color: var(--btn-light-color) !important;
+}
+
+.k-button-outline-primary:hover,
+.k-button-outline-primary.k-hover,
+.k-button-outline-primary:active,
+.k-button-outline-primary.k-active {
+	background-color: var(--btn-primary-color) !important;
+	color: var(--text-on-primary, var(--btn-text-light)) !important;
+}
+
+.k-button-outline-secondary:hover,
+.k-button-outline-secondary.k-hover,
+.k-button-outline-secondary:active,
+.k-button-outline-secondary.k-active {
+	background-color: var(--btn-secondary-color) !important;
+	color: var(--on-secondary, var(--btn-text-light)) !important;
+}
+
+.k-button-outline-tertiary:hover,
+.k-button-outline-tertiary.k-hover,
+.k-button-outline-tertiary:active,
+.k-button-outline-tertiary.k-active {
+	background-color: var(--btn-tertiary-color) !important;
+	color: var(--on-tertiary, var(--btn-text-light)) !important;
+}
+
+.k-button-outline-warning:hover,
+.k-button-outline-warning.k-hover,
+.k-button-outline-warning:active,
+.k-button-outline-warning.k-active {
+	background-color: var(--btn-warning-color) !important;
+	color: var(--on-warning, var(--btn-text-light)) !important;
+}
+
+.k-button-outline-success:hover,
+.k-button-outline-success.k-hover,
+.k-button-outline-success:active,
+.k-button-outline-success.k-active {
+	background-color: var(--btn-success-color) !important;
+	color: var(--on-success, var(--btn-text-light)) !important;
+}
+
+.k-button-outline-info:hover,
+.k-button-outline-info.k-hover,
+.k-button-outline-info:active,
+.k-button-outline-info.k-active {
+	background-color: var(--btn-info-color) !important;
+	color: var(--on-info, var(--btn-text-light)) !important;
+}
+
+.k-button-outline-danger:hover,
+.k-button-outline-danger.k-hover,
+.k-button-outline-danger:active,
+.k-button-outline-danger.k-active {
+	background-color: var(--btn-danger-color) !important;
+	color: var(--on-danger, var(--btn-text-light)) !important;
+}
+
+.k-button-outline-dark:hover,
+.k-button-outline-dark.k-hover,
+.k-button-outline-dark:active,
+.k-button-outline-dark.k-active {
+	background-color: var(--btn-dark-color) !important;
+	color: var(--btn-text-light) !important;
+}
+
+.k-button-outline-light:hover,
+.k-button-outline-light.k-hover,
+.k-button-outline-light:active,
+.k-button-outline-light.k-active {
+	background-color: var(--btn-light-color) !important;
+	color: var(--text) !important;
+}
+
+[class*="k-button-outline-"]:focus,
+[class*="k-button-outline-"].k-focus,
+[class*="k-button-outline-"].k-selected {
+	background-color: transparent;
+}
+
+.k-menu-button,
+.k-menu-button-primary,
+.k-menu-button-secondary,
+.k-menu-button-tertiary,
+.k-menu-button-warning,
+.k-menu-button-success,
+.k-menu-button-info,
+.k-menu-button-danger,
+.k-menu-button-dark {
+	color: var(--btn-text-light) !important;
+}
+
+.k-menu-button,
+.k-menu-button-primary {
+	background-color: var(--btn-primary-color) !important;
+	border-color: var(--btn-primary-color) !important;
+	color: var(--text-on-primary, var(--btn-text-light)) !important;
+}
+
+.k-menu-button-secondary {
+	background-color: var(--btn-secondary-color) !important;
+	border-color: var(--btn-secondary-color) !important;
+}
+
+.k-menu-button-tertiary {
+	background-color: var(--btn-tertiary-color) !important;
+	border-color: var(--btn-tertiary-color) !important;
+}
+
+.k-menu-button-warning {
+	background-color: var(--btn-warning-color) !important;
+	border-color: var(--btn-warning-color) !important;
+	color: var(--on-warning, var(--btn-text-light)) !important;
+}
+
+.k-menu-button-success {
+	background-color: var(--btn-success-color) !important;
+	border-color: var(--btn-success-color) !important;
+	color: var(--on-success, var(--btn-text-light)) !important;
+}
+
+.k-menu-button-info {
+	background-color: var(--btn-info-color) !important;
+	border-color: var(--btn-info-color) !important;
+	color: var(--on-info, var(--btn-text-light)) !important;
+}
+
+.k-menu-button-danger {
+	background-color: var(--btn-danger-color) !important;
+	border-color: var(--btn-danger-color) !important;
+	color: var(--on-danger, var(--btn-text-light)) !important;
+}
+
+.k-menu-button-dark {
+	background-color: var(--btn-dark-color) !important;
+	border-color: var(--btn-dark-color) !important;
+}
+
+	.k-menu-button:hover,
+	.k-menu-button-primary:hover,
+	.k-menu-button-secondary:hover,
+	.k-menu-button-tertiary:hover,
+	.k-menu-button-warning:hover,
+	.k-menu-button-success:hover,
+	.k-menu-button-info:hover,
+	.k-menu-button-danger:hover,
+	.k-menu-button-dark:hover {
+		filter: brightness(0.9);
+	}
+
+.k-button-link {
+	color: var(--primary);
+	background-color: transparent;
+	border: none;
+	box-shadow: none !important;
+	padding: 0;
+	text-transform: capitalize;
+}
+
+	.k-button-link::before {
+		color: inherit;
+		background-color: transparent;
+	}
+
+	.k-button-link:hover {
+		color: var(--primary-hover);
+		cursor: pointer !important;
+	}
+
+	.k-button-link:disabled {
+		color: inherit;
+		background-color: transparent;
+		border: none;
+		box-shadow: none !important;
+	}
+
+	.k-button-link.k-button-back {
+		padding: 0;
+		font-size: 1.2rem;
+	}
+
+	.k-button-link.k-dropdown-button {
+		padding: 0 !important;
+		background: none;
+		color: var(--primary);
+	}
+
+		.k-button-link.k-dropdown-button:hover {
+			color: var(--primary-hover);
+			background-color: transparent;
+			text-decoration: none;
+		}
+
+.k-button-upload {
+	width: max-content;
+}
+/*#endregion */
+
+/*#region Kendo buttons */
+
+.k-button {
+	min-height: 2.3rem;
+	padding: .55rem .9rem;
+	border-radius: var(--ds-radius-control);
+	font-size: .875rem;
+	font-weight: var(--font-weight-bold);
+	text-transform: none;
+	line-height: 1.2;
+	align-items: center;
+	transition: transform .15s, background-color .2s, filter .2s;
+}
+
+	.k-button[class*='k-button-'] {
+		box-shadow: none;
+	}
+
+	.k-button.k-button-primary {
+		box-shadow: 0 .375rem .8125rem color-mix(in srgb, var(--ds-accent) 13%, transparent);
+	}
+
+	.k-button.k-button-secondary,
+	.k-button.k-button-grid {
+		color: var(--text-secondary, #4c6575) !important;
+		background-color: var(--surface) !important;
+		border: .0625rem solid var(--ds-line) !important;
+	}
+
+		.k-button.k-button-secondary:hover,
+		.k-button.k-button-grid:hover {
+			filter: none;
+			background-color: var(--ds-soft) !important;
+		}
+
+	.k-button.k-button-danger.k-button-soft {
+		color: var(--danger) !important;
+		background-color: color-mix(in srgb, var(--danger) 7%, var(--surface)) !important;
+		border: .0625rem solid color-mix(in srgb, var(--danger) 22%, transparent) !important;
+	}
+
+/*#endregion */

@@ -1,0 +1,44 @@
+/*#region Window Style */
+
+body.window {
+    --fs: 1rem;
+    font-size: var(--fs);
+    height: 100%;
+}
+
+    body.window main[role=main] {
+        height: 100%;
+        padding: calc(1.5rem*.25) 0;
+    }
+
+        body.window main[role=main] .content-wrapper {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+    body.window .form-group .form-label,
+    body.window :is(.form-group > .form-control,.form-group > .phone-number > .form-control) {
+        font-size: var(--fs) !important;
+    }
+
+    body.window [class*="k-"] {
+        font-size: var(--fs) !important;
+    }
+
+    body.window [class*="field-validation"] {
+        --fs: .7857rem;
+        font-size: var(--fs) !important;
+    }
+
+    body.window .form-group [class*="field-validation"] {
+        bottom: 0;
+    }
+
+    body.window :is(.form-group > .form-control,.form-group > .phone-number > .form-control) {
+        padding-block: .475rem;
+        padding-inline: .475rem;
+        height: 3.1275rem;
+    }
+
+/*#endregion */

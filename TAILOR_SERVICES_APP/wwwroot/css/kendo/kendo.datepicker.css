@@ -1,0 +1,170 @@
+/*#region Kendo DatePicker */
+
+.k-datepicker.form-control {
+	display: grid !important;
+	grid-template-columns: 1fr auto !important;
+	opacity: 1;
+}
+
+	.k-datepicker.form-control .k-input-inner {
+		padding: .4rem .75rem !important;
+		border-radius: 0 !important;
+		pointer-events: initial;
+		width: calc(100% - 0.015rem) !important;
+		padding-right: 0.475rem !important;
+	}
+
+		.k-datepicker.form-control .k-input-inner + .k-button {
+			display: flex;
+			visibility: visible;
+			pointer-events: initial;
+		}
+
+		.k-datepicker.form-control .k-input-inner:read-only {
+			pointer-events: none;
+		}
+
+			.k-datepicker.form-control .k-input-inner:read-only + .k-button {
+				display: none;
+				visibility: collapse;
+			}
+
+	.k-datepicker.form-control .k-button {
+		border-radius: 0;
+		padding: 0 !important;
+		box-shadow: none;
+		background-color: transparent;
+		color: var(--muted-text);
+	}
+
+		.k-datepicker.form-control .k-button::before {
+			content: none;
+		}
+
+		.k-datepicker.form-control .k-button .k-icon {
+			font-weight: lighter;
+			font-size: 1.25rem;
+		}
+
+	.k-datepicker.form-control.k-disabled .k-button {
+		display: none;
+		visibility: collapse;
+	}
+
+.month-view-picker {
+	position: relative;
+}
+
+	.month-view-picker .k-child-animation-container {
+		width: max-content;
+	}
+
+.k-mobile .k-datepicker.form-control .k-input-inner:read-only {
+	pointer-events: initial !important;
+}
+
+/*#endregion */
+
+/*#region Kendo DatePicker - Mobile Mode */
+
+:root {
+	--calendar-column-size: 87.5px;
+	--calendar-column-month-size: 50px;
+}
+
+.adaptive-datepicker-container {
+	position: relative;
+}
+
+	.adaptive-datepicker-container .input-overlay {
+		position: absolute;
+		left: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 9999;
+	}
+
+	.adaptive-datepicker-container .popup-container {
+		display: none;
+		position: fixed;
+		height: 100%;
+		width: 100%;
+		top: 0;
+		left: 0;
+		z-index: 99;
+	}
+
+		.adaptive-datepicker-container .popup-container.container-shown {
+			display: block;
+		}
+
+		.adaptive-datepicker-container .popup-container .popup-overlay {
+			position: absolute;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			background-color: var(--overlay);
+		}
+
+		.adaptive-datepicker-container .popup-container .k-animation-container {
+			top: calc(50vh - 250px) !important;
+			left: calc(50% - 175px) !important;
+			z-index: 999;
+		}
+
+			.adaptive-datepicker-container .popup-container .k-animation-container .k-child-animation-container {
+				height: max-content !important;
+			}
+
+	.adaptive-datepicker-container .k-calendar {
+		width: max-content !important;
+	}
+
+		.adaptive-datepicker-container .k-calendar .k-calendar-header {
+			height: 3.5rem;
+		}
+
+		.adaptive-datepicker-container .k-calendar .k-calendar-view {
+			width: max-content !important;
+		}
+
+			.adaptive-datepicker-container .k-calendar .k-calendar-view .k-calendar-table {
+				width: max-content !important;
+			}
+
+		.adaptive-datepicker-container .k-calendar .k-calendar-monthview .k-calendar-thead .k-calendar-tr .k-calendar-th {
+			font-size: 18px !important;
+			block-size: var(--calendar-column-month-size) !important;
+			inline-size: var(--calendar-column-month-size) !important;
+			width: var(--calendar-column-month-size) !important;
+			height: var(--calendar-column-month-size) !important;
+			border-radius: 0 !important;
+		}
+
+		.adaptive-datepicker-container .k-calendar .k-calendar-monthview .k-calendar-tbody .k-calendar-tr td[role=gridcell] {
+			font-size: 18px !important;
+			block-size: var(--calendar-column-month-size) !important;
+			inline-size: var(--calendar-column-month-size) !important;
+			width: var(--calendar-column-month-size) !important;
+			height: var(--calendar-column-month-size) !important;
+			border-radius: 0 !important;
+		}
+
+		.adaptive-datepicker-container .k-calendar .k-calendar-yearview .k-calendar-tbody .k-calendar-tr td[role=gridcell],
+		.adaptive-datepicker-container .k-calendar .k-calendar-decadeview .k-calendar-tbody .k-calendar-tr td[role=gridcell],
+		.adaptive-datepicker-container .k-calendar .k-calendar-centuryview .k-calendar-tbody .k-calendar-tr td[role=gridcell] {
+			font-size: 18px !important;
+			block-size: var(--calendar-column-size) !important;
+			inline-size: var(--calendar-column-size) !important;
+			width: var(--calendar-column-size) !important;
+			height: var(--calendar-column-size) !important;
+			border-radius: 0 !important;
+		}
+
+		.adaptive-datepicker-container .k-calendar .k-calendar-view.touch-event .k-calendar-tbody .k-calendar-tr td[role=gridcell] {
+			pointer-events: none;
+		}
+
+/*#endregion */

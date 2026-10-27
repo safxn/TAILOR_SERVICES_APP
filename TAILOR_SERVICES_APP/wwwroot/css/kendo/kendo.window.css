@@ -1,0 +1,117 @@
+/*#region Window Style */
+
+:root {
+    --window-border: 0.75rem;
+}
+
+.k-window {
+    font-family: var(--font-family) !important;
+    position: fixed;
+    max-height: calc(100% - 3rem);
+    max-width: calc(100% - 3rem);
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    border-radius: 0;
+    display: flex;
+    gap: 0.5rem;
+    background-color: transparent;
+}
+
+    .k-window .k-window-titlebar {
+        --bs-gutter-x: 2.275rem;
+        --bs-gutter-y: 1rem;
+        padding-inline: var(--bs-gutter-y);
+        padding-block: calc(var(--bs-gutter-x) * .5);
+        border-radius: 0;
+        background-color: var(--modal-header-bg);
+    }
+
+        .k-window .k-window-titlebar .k-window-title {
+            padding: 0 !important;
+            line-height: 1.75rem;
+            display: flex;
+            font-family: var(--font-family) !important;
+            justify-content: center;
+            text-transform: uppercase;
+            color: var(--text-primary);
+            font-weight: 800 !important;
+        }
+
+            .k-window .k-window-titlebar .k-window-title::before {
+                content: none;
+            }
+
+        .k-window .k-window-titlebar .k-window-titlebar-actions {
+            margin: 0 !important;
+            padding: 0 !important;
+            margin-inline: 0 !important;
+            position: absolute;
+        }
+
+            .k-window .k-window-titlebar .k-window-titlebar-actions:dir(ltr) {
+                right: 0;
+            }
+
+            .k-window .k-window-titlebar .k-window-titlebar-actions:dir(rtl) {
+                left: 0;
+            }
+
+            .k-window .k-window-titlebar .k-window-titlebar-actions:empty {
+                display: none;
+                visibility: collapse;
+            }
+
+            .k-window .k-window-titlebar .k-window-titlebar-actions .k-window-titlebar-action::before {
+                content: none;
+            }
+
+    .k-window .k-window-content {
+        padding-bottom: 0;
+        background-color: var(--modal-bg);
+        padding-block: 1rem;
+        padding-inline: 1rem;
+    }
+
+    .k-window .k-popup-edit-form {
+        overflow-y: scroll;
+        padding: 0;
+        padding-block: 0.5rem;
+        padding-inline: 0.75rem;
+    }
+
+        .k-window .k-popup-edit-form .k-edit-form-container {
+            width: 100%;
+        }
+
+        .k-window .k-popup-edit-form .form-group .k-tooltip {
+            background-color: transparent !important;
+            padding: 0;
+            bottom: 0;
+        }
+
+            .k-window .k-popup-edit-form .form-group .k-tooltip .k-tooltip-content {
+                font-size: 12px !important;
+            }
+
+            .k-window .k-popup-edit-form .form-group .k-tooltip .k-icon,
+            .k-window .k-popup-edit-form .form-group .k-tooltip .k-callout {
+                display: none;
+                visibility: collapse;
+            }
+
+        .k-window .k-popup-edit-form .k-edit-buttons {
+            --bs-gutter-x: 1.5rem;
+            --bs-gutter-y: 0;
+            margin: 0;
+            padding-right: calc(var(--bs-gutter-x) * .5);
+            padding-left: calc(var(--bs-gutter-x) * .5);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: end;
+        }
+
+            .k-window .k-popup-edit-form .k-edit-buttons .k-grid-save-command {
+            }
+
+/*#endregion */

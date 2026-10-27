@@ -1,0 +1,40 @@
+﻿/*#region Timeline Style */
+
+.k-timeline {
+}
+
+.k-timeline-vertical {
+	padding: 0 !important;
+	padding-inline: 3rem !important;
+	padding-block: 0rem !important;
+	margin: 2rem 0 !important;
+}
+
+	.k-timeline-vertical:after {
+		border: none;
+		border-radius: 0.5rem;
+		width: 0.25rem;
+		background: var(--primary); /* fallback for old browsers */
+		background: -webkit-linear-gradient(to bottom, var(--primary-400), var(--primary-800));
+		background: linear-gradient(to bottom, var(--primary-400), var(--primary-800));
+	}
+
+	.k-timeline-vertical .k-timeline-event {
+		padding-block: 3rem;
+	}
+
+	.k-timeline-vertical .k-timeline-flag-wrap {
+		display: none;
+		visibility: collapse;
+	}
+
+	.k-timeline-vertical .k-timeline-card .k-card {
+		display: flex;
+		width: unset !important;
+	}
+
+		.k-timeline-vertical .k-timeline-card .k-card > div {
+			background-color: var(--surface) !important;
+		}
+
+/*#endregion*/

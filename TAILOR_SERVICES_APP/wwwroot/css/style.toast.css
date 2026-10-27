@@ -1,0 +1,44 @@
+/*#region Toast Style */
+
+#alert-toast {
+    min-width: 14.2857rem;
+    text-align: center;
+    border-radius: .5714rem;
+    padding: .8571rem;
+    position: fixed;
+    bottom: 2.1429rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1rem;
+}
+
+    #alert-toast.show {
+        animation: toast-fadein 0.5s, toast-fadeout 0.5s 2.5s;
+        z-index: 999;
+    }
+
+@keyframes toast-fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+
+    to {
+        bottom: 2.1429rem;
+        opacity: 1;
+    }
+}
+
+@keyframes toast-fadeout {
+    from {
+        bottom: 2.1429rem;
+        opacity: 1;
+    }
+
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}
+
+/*#endregion */

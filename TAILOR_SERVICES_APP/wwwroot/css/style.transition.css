@@ -1,0 +1,80 @@
+/*#region TRANSITION UTILITIES */
+
+/* Speed Variants */
+.transition-xfast {
+    transition: transform .1s ease;
+}
+
+.transition-fast {
+    transition: transform .2s ease;
+}
+
+.transition-normal {
+    transition: transform .3s ease;
+}
+
+.transition-slow {
+    transition: transform .5s ease;
+}
+
+.transition-xslow {
+    transition: transform .8s ease;
+}
+
+/* Timing Functions */
+.transition-linear {
+    transition: transform .3s linear;
+}
+
+.transition-ease {
+    transition: transform .3s ease;
+}
+
+.transition-ease-in {
+    transition: transform .3s ease-in;
+}
+
+.transition-ease-out {
+    transition: transform .3s ease-out;
+}
+
+.transition-ease-in-out {
+    transition: transform .3s ease-in-out;
+}
+
+/* Property-Specific */
+
+.transition-opacity {
+    transition: opacity .3s ease;
+}
+
+.transition-color {
+    transition: color .3s ease;
+}
+
+.transition-background {
+    transition: background-color .3s ease;
+}
+
+.transition-layout {
+    transition: width .3s ease, height .3s ease;
+}
+
+.transition-all {
+    transition: all .3s ease;
+}
+
+/* Combined & Special Curves */
+.transition-pop {
+    transition: transform .25s cubic-bezier(.25,.8,.25,1);
+}
+
+.transition-bounce {
+    transition: transform .35s cubic-bezier(.34, 1.56, .64, 1);
+}
+
+.transition-softspring {
+    transition: transform .4s cubic-bezier(.23,1,.32,1);
+}
+
+/*#endregion */

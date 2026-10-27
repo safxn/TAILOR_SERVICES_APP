@@ -1,0 +1,75 @@
+:root {
+    /*---- Default Font Settings ----*/
+    --font-family: 'Nunito', 'Almarai', sans-serif;
+    --font-weight-extra-light: 300;
+    --font-weight-light: 400;
+    --font-weight-regular: 500;
+    --font-weight-medium: 600;
+    --font-weight-semi-bold: 700;
+    --font-weight-bold: 800;
+    --font-weight-extra-bold: 900;
+    /*---- Icon Font Settings ----*/
+    --font-family-icon: 'UI Thin Icon';
+    --font-family-regular-icon: 'UI Regular Icon';
+}
+
+::-ms-reveal {
+    display: none
+}
+
+input::-ms-reveal,
+input::-ms-clear {
+    display: none;
+}
+
+* h1, * h2, * h3, * h4, * h5, * h6, * p, * i, * b, * table, * td, * th, * ul, * li, * input, * form, * button, * div {
+    margin: 0;
+    padding: 0;
+}
+
+.clear-space {
+    box-sizing: border-box;
+}
+
+.font-default {
+    font-family: var(--font-family) !important;
+    font-weight: var(--font-weight-regular) !important;
+}
+
+.font-extra-light {
+    font-family: var(--font-family) !important;
+    font-weight: var(--font-weight-extra-light) !important;
+}
+
+.font-light {
+    font-family: var(--font-family) !important;
+    font-weight: var(--font-weight-light) !important;
+}
+
+.font-medium {
+    font-family: var(--font-family) !important;
+    font-weight: var(--font-weight-medium) !important;
+}
+
+.font-semi-bold {
+    font-family: var(--font-family) !important;
+    font-weight: var(--font-weight-semi-bold) !important;
+}
+
+.font-bold {
+    font-family: var(--font-family) !important;
+    font-weight: var(--font-weight-bold) !important;
+}
+
+.font-extra-bold {
+    font-family: var(--font-family) !important;
+    font-weight: var(--font-weight-extra-bold) !important;
+}
+
+.font-icon {
+    font-family: var(--font-family-icon) !important;
+}
+
+.font-icon-regular {
+    font-family: var(--font-family-regular-icon) !important;
+}

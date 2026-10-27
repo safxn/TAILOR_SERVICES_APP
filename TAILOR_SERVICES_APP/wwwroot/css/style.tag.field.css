@@ -1,0 +1,30 @@
+/*#region Forms */
+
+.form-group .form-label {
+	margin-bottom: .45rem;
+	font-size: .877rem;
+	font-weight: var(--font-weight-bold);
+	color: var(--text-secondary, #425d70);
+}
+
+:is(.form-group > .form-control, .form-group > .phone-number > .form-control) {
+	border-radius: .5rem !important;
+	background-color: var(--input-bg, var(--surface));
+}
+
+	:is(.form-group > .form-control, .form-group > .phone-number > .form-control):focus-within {
+		border-color: color-mix(in srgb, var(--ds-accent) 60%, transparent) !important;
+	}
+
+	:is(.form-group > .form-control, .form-group > .phone-number > .form-control),
+	:is(.form-group > .form-control, .form-group > .phone-number > .form-control) :is(.k-input-inner, .k-input-value-text) {
+		font-size: .8125rem;
+	}
+
+	.form-group textarea.form-control,
+	.form-group .form-control > textarea.k-input-inner {
+		line-height: 1.4 !important;
+	}
+
+/*#endregion */
+

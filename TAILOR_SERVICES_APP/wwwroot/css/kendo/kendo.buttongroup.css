@@ -1,0 +1,72 @@
+/*#region Button Group Styles */
+
+.k-button-group {
+	--bs-btn-padding-x: 1.25rem;
+	--bs-btn-padding-y: .425rem;
+	font-family: inherit;
+	font-size: 1rem;
+	display: grid;
+	grid-auto-flow: column;
+	gap: 0.75rem;
+	padding: var(--bs-btn-padding-y) var(--bs-btn-padding-x);
+	border-radius: 0.25rem;
+	text-transform: uppercase;
+	line-height: unset;
+}
+
+	.k-button-group.option-group {
+		gap: .25rem;
+		padding: .25rem;
+		border: .0625rem solid var(--ds-line, var(--border));
+		border-radius: .625rem;
+		background-color: var(--ds-soft, var(--surface-2));
+		box-shadow: none;
+	}
+
+		.k-button-group.option-group .k-button {
+			padding: .4rem 1.1rem;
+			border: none;
+			border-radius: .4rem !important;
+			background-color: transparent;
+			color: var(--ds-muted, var(--muted-text));
+			font-size: .8rem;
+			font-weight: var(--font-weight-semi-bold, 600);
+			letter-spacing: .03rem;
+			box-shadow: none;
+			transition: background-color .15s, color .15s;
+		}
+
+			.k-button-group.option-group .k-button:hover:not(.k-selected) {
+				background-color: color-mix(in srgb, var(--primary) 8%, transparent);
+				color: var(--primary);
+			}
+
+			.k-button-group.option-group .k-button.k-selected {
+				background-color: var(--primary);
+				color: var(--text-on-primary);
+				box-shadow: 0 .0625rem .25rem rgba(0, 0, 0, 0.2);
+			}
+
+	.k-button-group.user-group-type {
+		padding: 0;
+		background-color: transparent;
+		box-shadow: none;
+	}
+
+		.k-button-group.user-group-type .k-button {
+			border-start-end-radius: .25rem !important;
+			border-end-end-radius: .25rem !important;
+			border-start-start-radius: .25rem !important;
+			border-end-start-radius: .25rem !important;
+			line-height: 0.75rem;
+			box-shadow: none;
+			background-color: var(--chip-bg);
+			color: var(--chip-text);
+		}
+
+			.k-button-group.user-group-type .k-button.k-selected {
+				background-color: var(--primary);
+				color: var(--text-on-primary);
+			}
+
+/*#endregion */

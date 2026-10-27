@@ -22,7 +22,7 @@ internal sealed class UserRepository(
         => await _userManager.Users
             .AsNoTracking()
             .Select(x => new UserGridDto { Id = x.Id, FullName = x.FullName!, Email = x.Email!, PhoneNumber = x.PhoneNumber })
-            .ToDataSourceResultAsync(request);
+            .ToDataSourceResultAsync(request,ct);
 
     public async Task<OperationResult<UserDetailDto>> GetByIdAsync(string id, CancellationToken ct)
     {

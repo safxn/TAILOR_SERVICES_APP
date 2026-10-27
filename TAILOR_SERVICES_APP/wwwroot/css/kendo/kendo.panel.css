@@ -1,0 +1,21 @@
+/*#region PanelBar Style */
+
+.k-panelbar {
+    width: 100%;
+}
+
+    .k-panelbar .k-panelbar-item {
+    }
+
+        .k-panelbar .k-panelbar-item .k-link {
+            color: var(--text);
+            background-color: var(--surface);
+            font-weight: bold;
+        }
+
+            .k-panelbar .k-panelbar-item .k-link.k-selected {
+                color: var(--text-on-primary);
+                background-color: var(--primary) !important;
+            }
+
+/*#endregion */

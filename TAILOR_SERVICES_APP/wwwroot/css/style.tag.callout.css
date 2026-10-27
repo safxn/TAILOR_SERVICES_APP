@@ -1,0 +1,35 @@
+/*#region Banner */
+
+.banner {
+	--bc: var(--info);
+	display: flex;
+	align-items: center;
+	gap: .625rem;
+	padding: .8rem 1rem;
+	border-radius: .625rem;
+	font-size: .845rem;
+	line-height: 1.6;
+	color: color-mix(in srgb, var(--bc) 80%, var(--ds-ink));
+	background: color-mix(in srgb, var(--bc) 8%, var(--surface));
+	border: .0625rem solid color-mix(in srgb, var(--bc) 25%, transparent);
+}
+
+	.banner > .fi {
+		color: var(--bc);
+		line-height: 1;
+	}
+
+	.banner.success {
+		--bc: var(--success);
+	}
+
+	.banner.warn {
+		--bc: var(--warning);
+	}
+
+	.banner.danger {
+		--bc: var(--danger);
+	}
+
+/*#endregion */
+

@@ -1,0 +1,65 @@
+/*#region Checkbox Styles */
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    padding: 0.25rem 0.015rem;
+    font-size: 1rem;
+}
+
+/*#endregion */
+
+/*#region Kendo Checkbox */
+
+.k-checkbox {
+    width: 1.75rem;
+    height: 1.75rem;
+    border: none;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: none !important;
+    border: none !important;
+    color: var(--text-secondary) !important;
+}
+
+    .k-checkbox:disabled::before {
+        color: var(--text-disabled) !important;
+    }
+
+    .k-checkbox::before {
+        color: var(--text-secondary) !important;
+        font-family: var(--font-family-regular-icon);
+        font-size: 1.25rem;
+        content: '\f158';
+    }
+
+    .k-checkbox:checked {
+        border: none;
+        background: no-repeat;
+    }
+
+        .k-checkbox:checked:disabled {
+            background-color: transparent;
+        }
+
+        .k-checkbox:checked::before {
+            content: '\e3dc';
+            color: var(--primary) !important;
+        }
+
+        .k-checkbox:checked:disabled::before {
+            color: var(--text-disabled) !important;
+        }
+
+    .k-checkbox:indeterminate {
+        background-color: transparent;
+    }
+
+        .k-checkbox:indeterminate::before {
+            content: "\f17e";
+        }
+
+/*#endregion */

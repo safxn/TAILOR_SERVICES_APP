@@ -1,0 +1,60 @@
+.k-animation-container:has(.k-notification) {
+    display: flex !important;
+    margin: 0 auto !important;
+    left: unset !important;
+    right: 1.5rem !important;
+    bottom: 1.5rem !important;
+    top: unset !important;
+    overflow: visible !important;
+}
+
+.k-notification {
+    min-width: 16rem;
+    max-width: min(26rem, calc(100vw - 3rem));
+    padding-block: 0.75rem !important;
+    padding-inline: 0.875rem !important;
+    border: 1px solid var(--border) !important;
+    border-inline-start-width: 4px !important;
+    border-radius: var(--radius, 0.5rem) !important;
+    background-color: var(--surface) !important;
+    color: var(--text) !important;
+    box-shadow: var(--shadow-lg) !important;
+    font-size: 0.8125rem;
+    line-height: 1.4;
+}
+
+    .k-notification i {
+        font-size: 1rem;
+    }
+
+.k-notification-info {
+    border-inline-start-color: var(--info) !important;
+}
+
+    .k-notification-info i {
+        color: var(--info);
+    }
+
+.k-notification-success {
+    border-inline-start-color: var(--success) !important;
+}
+
+    .k-notification-success i {
+        color: var(--success);
+    }
+
+.k-notification-warning {
+    border-inline-start-color: var(--warning) !important;
+}
+
+    .k-notification-warning i {
+        color: var(--warning);
+    }
+
+.k-notification-error {
+    border-inline-start-color: var(--danger) !important;
+}
+
+    .k-notification-error i {
+        color: var(--danger);
+    }

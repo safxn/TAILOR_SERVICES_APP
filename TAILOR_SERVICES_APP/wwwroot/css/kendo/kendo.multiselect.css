@@ -1,0 +1,19 @@
+/*#region Multiselect Styles */
+
+.form-group > .form-control.k-multiselect {
+    padding-block: 0;
+    padding-inline: 0;
+    height: max-content;
+    min-height: 2.5rem;
+}
+
+    .form-group > .form-control.k-multiselect .k-input-values .k-input-inner {
+        padding-inline: 8px 16px;
+    }
+
+    .form-group > .form-control.k-multiselect .k-clear-value {
+        display: none;
+        visibility: collapse;
+    }
+
+/*#endregion */

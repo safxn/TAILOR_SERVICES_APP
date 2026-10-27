@@ -1,0 +1,75 @@
+/*#region Chips */
+
+.chip {
+	--cc: var(--ds-muted);
+	display: inline-flex;
+	align-items: center;
+	gap: .375rem;
+	max-width: 100%;
+	padding: .35rem .55rem;
+	border-radius: var(--ds-radius-pill);
+	font-size: .65rem;
+	font-weight: var(--font-weight-extra-bold);
+	line-height: 1.1;
+	white-space: nowrap;
+	color: var(--cc);
+	background: color-mix(in srgb, var(--cc) 12%, transparent);
+}
+
+	.chip::before {
+		content: '';
+		flex: 0 0 auto;
+		width: .375rem;
+		height: .375rem;
+		border-radius: 50%;
+		background: currentColor;
+	}
+
+	.chip .chip-text {
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	.chip.chip-draft {
+		--cc: var(--ds-muted);
+	}
+
+	.chip.chip-info {
+		--cc: var(--info);
+	}
+
+	.chip.chip-transit {
+		--cc: var(--tertiary);
+	}
+
+	.chip.chip-success {
+		--cc: var(--success);
+	}
+
+	.chip.chip-warning {
+		--cc: var(--warning);
+	}
+
+	.chip.chip-danger {
+		--cc: var(--danger);
+	}
+
+	.chip.chip-primary {
+		--cc: var(--ds-accent);
+	}
+
+.tag {
+	display: inline-flex;
+	align-items: center;
+	gap: .3rem;
+	padding: .3rem .55rem;
+	border-radius: var(--ds-radius-pill);
+	font-size: .65rem;
+	font-weight: var(--font-weight-bold);
+	white-space: nowrap;
+	color: var(--ds-muted);
+	background: var(--ds-soft);
+}
+
+/*#endregion */
+

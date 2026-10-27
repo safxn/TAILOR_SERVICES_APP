@@ -9,5 +9,5 @@ internal static class DatabaseExtensions
 {
     public static IServiceCollection AddDatabase(this IServiceCollection services, IConfiguration config)
         => services.AddDbContext<AppDbContext>(o =>
-            o.UseSqlServer(config.GetConnectionString("DefaultConnection")));
+            o.UseSqlServer(config.GetConnectionString("DefaultConnectionString")));
 }

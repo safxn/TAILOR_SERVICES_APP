@@ -1,0 +1,20 @@
+﻿.options-tooltip .tooltip-inner {
+	text-align: left;
+	max-width: 15.7143rem;
+	padding: .4286rem .7143rem;
+}
+
+.options-tip-item {
+	display: block;
+	padding: .1429rem 0;
+	font-size: .8571rem;
+}
+
+	.options-tip-item + .options-tip-item {
+		border-top: .0714rem solid rgba(255, 255, 255, 0.15);
+	}
+
+.options-tip-empty {
+	font-size: .8571rem;
+	opacity: 0.6;
+}

@@ -1,0 +1,53 @@
+/*#region Tab Style */
+
+.k-timepicker.form-control {
+    display: grid !important;
+    grid-template-columns: 1fr auto !important;
+    padding: 0 !important;
+    opacity: 1;
+}
+
+    .k-timepicker.form-control .k-input-inner {
+        padding: .4em .75em !important;
+        border-radius: 0 !important;
+        pointer-events: initial;
+    }
+
+        .k-timepicker.form-control .k-input-inner + .k-button {
+            display: flex;
+            visibility: visible;
+            pointer-events: initial;
+        }
+
+        .k-timepicker.form-control .k-input-inner:read-only {
+            pointer-events: none;
+        }
+
+            .k-timepicker.form-control .k-input-inner:read-only + .k-button {
+                display: none;
+                visibility: collapse;
+            }
+
+    .k-timepicker.form-control .k-button {
+        border-radius: 0;
+        padding: 0 0.5em !important;
+        box-shadow: none;
+        background-color: transparent;
+        color: var(--muted-text);
+    }
+
+        .k-timepicker.form-control .k-button::before {
+            content: none;
+        }
+
+        .k-timepicker.form-control .k-button .k-icon {
+            font-weight: lighter;
+            font-size: 1.25rem;
+        }
+
+    .k-timepicker.form-control.k-disabled .k-button {
+        display: none;
+        visibility: collapse;
+    }
+
+/*#endregion */

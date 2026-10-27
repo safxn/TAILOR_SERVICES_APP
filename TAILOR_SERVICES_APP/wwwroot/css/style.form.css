@@ -1,0 +1,299 @@
+
+/*#region Form Group */
+
+.form-group {
+	position: relative;
+	padding-bottom: 1.25rem;
+	display: flex;
+	flex-direction: column;
+}
+
+	.form-group .form-label {
+		font-size: clamp(0.75rem, calc(.8rem + 0.6vw), 1.0475rem);
+		position: relative;
+		padding: 0;
+		margin-bottom: 0.25rem;
+		color: var(--label-text, var(--text-secondary, #717171));
+		display: flex;
+		gap: .5rem;
+		align-items: center;
+		font-family: var(--font-family);
+		font-weight: var(--font-weight-medium);
+	}
+
+		.form-group .form-label.required::after {
+			content: '\ebee';
+			font-family: var(--font-family-icon);
+			font-size: .625rem;
+			height: .625rem;
+			align-items: center;
+			display: flex;
+			color: var(--bs-danger);
+			font-weight: bold;
+		}
+
+:is(.form-group > .form-control,.form-group > .phone-number > .form-control) {
+	font-size: 1rem;
+	padding-block: .275rem;
+	padding-inline: .475rem;
+	height: 2.75rem;
+	line-height: 1.25rem;
+	position: relative;
+	color: var(--input-text);
+	background-color: var(--input-bg, #fff) !important;
+	background-clip: padding-box;
+	border-radius: 0.375rem !important;
+	border: .0714rem solid var(--input-border, #ced4da) !important;
+	display: block;
+	box-shadow: none;
+}
+
+	:is(.form-group > .form-control,.form-group > .phone-number > .form-control).k-disabled {
+		opacity: 1;
+	}
+
+	:is(.form-group > .form-control,.form-group > .phone-number > .form-control).validating {
+	}
+
+		:is(.form-group > .form-control,.form-group > .phone-number > .form-control).validating::before {
+			content: '\e676';
+			font-family: var(--font-family-regular-icon);
+			font-size: 1.125rem;
+			position: absolute;
+			right: .5rem;
+			top: calc(50% - 0.5rem);
+			z-index: 999;
+			color: var(--text-dark);
+			/*--- animation ----*/
+			animation: spin-rotate 2s linear infinite;
+		}
+
+		:is(.form-group > .form-control,.form-group > .phone-number > .form-control).validating:dir(rtl):before {
+			left: .5rem;
+			right: unset;
+		}
+
+	:is(.form-group > .form-control,.form-group > .phone-number > .form-control).valid {
+	}
+
+		:is(.form-group > .form-control,.form-group > .phone-number > .form-control).valid::before {
+			content: '\e3d7';
+			font-family: var(--font-family-regular-icon);
+			font-size: 1.125rem;
+			position: absolute;
+			right: .5rem;
+			top: calc(50% - 0.5rem);
+			z-index: 999;
+			color: var(--text-success);
+			font-weight: bold;
+		}
+
+		:is(.form-group > .form-control,.form-group > .phone-number > .form-control).valid:dir(rtl):before {
+			left: .5rem;
+			right: unset;
+		}
+
+	:is(.form-group > .form-control,.form-group > .phone-number > .form-control).invalid {
+	}
+
+		:is(.form-group > .form-control,.form-group > .phone-number > .form-control).invalid::before {
+			content: '\e453';
+			font-family: var(--font-family-regular-icon);
+			font-size: 1.125rem;
+			position: absolute;
+			right: .5rem;
+			top: calc(50% - 0.5rem);
+			z-index: 999;
+			color: var(--text-danger);
+			font-weight: bold;
+		}
+
+		:is(.form-group > .form-control,.form-group > .phone-number > .form-control).invalid:dir(rtl):before {
+			left: .5rem;
+			right: unset;
+		}
+
+	:is(.form-group > .form-control,.form-group > .phone-number > .form-control)::after {
+		transform: none;
+		border-width: 0;
+	}
+
+	:is(.form-group > .form-control,.form-group > .phone-number > .form-control) > .k-input-inner {
+		padding: 0 !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 100% !important;
+		line-height: 1.25rem !important;
+		color: var(--input-text);
+		background-color: transparent;
+	}
+
+	:is(.form-group > .form-control,.form-group > .phone-number > .form-control).k-dropdownlist > .k-input-inner {
+		padding: 0.275rem !important;
+	}
+
+	:is(.form-group > .form-control,.form-group > .phone-number > .form-control):focus-within {
+		border-color: var(--input-border-focus) !important;
+		box-shadow: var(--input-shadow-focus);
+	}
+
+	:is(.form-group > .form-control,.form-group > .phone-number > .form-control).k-disabled,
+	:is(.form-group > .form-control,.form-group > .phone-number > .form-control):disabled,
+	:is(.form-group > .form-control,.form-group > .phone-number > .form-control)[readonly] {
+		/*background-color: var(--input-bg-disabled) !important;*/
+		color: var(--input-text-disabled);
+	}
+
+.form-group.password .password-visibility {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: .5rem;
+	z-index: 99;
+	line-height: 1;
+	display: flex;
+	align-items: center;
+}
+
+	.form-group.password .password-visibility:dir(rtl) {
+		left: 0.5rem;
+		right: unset;
+	}
+
+	.form-group.password .password-visibility .checkmark {
+		line-height: 1;
+		display: flex;
+		align-items: center;
+	}
+
+		.form-group.password .password-visibility .checkmark:hover {
+			cursor: pointer;
+		}
+
+		.form-group.password .password-visibility .checkmark::before {
+			content: '\e725';
+			font-family: var(--font-family-regular-icon);
+			font-size: 1rem;
+			color: var(--muted-text);
+		}
+
+	.form-group.password .password-visibility input {
+		display: none;
+	}
+
+		.form-group.password .password-visibility input:checked + .checkmark::before {
+			content: '\e728';
+			font-family: var(--font-family-regular-icon);
+			font-size: 1rem;
+		}
+
+:is(.form-group > .form-control,.form-group > .phone-number > .form-control).k-numerictextbox .k-input-spinner {
+	display: none;
+	visibility: collapse;
+}
+
+:is(.form-group > .form-control,.form-group > .phone-number > .form-control).search-control + .clear-button {
+	display: none;
+	position: absolute;
+	right: 0.475rem;
+	z-index: 999;
+	top: 0.275rem;
+	font-size: 1.275rem;
+	color: var(--muted-text);
+}
+
+	:is(.form-group > .form-control,.form-group > .phone-number > .form-control).search-control + .clear-button:hover {
+		cursor: pointer;
+	}
+
+:is(.form-group > .form-control,.form-group > .phone-number > .form-control).search-control:has(.k-input-inner:not(:placeholder-shown)) + .clear-button {
+	display: block;
+}
+
+.form-group textarea.form-control {
+	resize: none !important;
+	line-height: 1.4rem !important;
+	text-indent: unset !important;
+	padding: 0.4rem .8rem !important;
+	overflow-y: scroll !important;
+}
+
+.form-group .field-validation-valid,
+.form-group .field-validation-error {
+	color: var(--bs-danger);
+	position: absolute;
+	width: max-content;
+	left: 0;
+	font-size: calc(1rem * 0.785);
+	font-style: normal;
+	margin: 0;
+	bottom: -0.0175rem;
+	font-family: var(--font-family) !important;
+	font-weight: var(--font-weight-medium) !important;
+}
+
+.form-group.form-group-horizontal {
+	flex-direction: revert;
+	justify-content: space-between;
+}
+
+	.form-group.form-group-horizontal .form-label {
+		margin: 0;
+	}
+
+@keyframes spin-rotate {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+:is(.form-group > .form-control,.form-group > .phone-number > .form-control).k-input-inner:-webkit-autofill,
+:is(.form-group > .form-control,.form-group > .phone-number > .form-control).k-input-inner:-webkit-autofill:hover,
+:is(.form-group > .form-control,.form-group > .phone-number > .form-control).k-input-inner:-webkit-autofill:focus,
+:is(.form-group > .form-control,.form-group > .phone-number > .form-control).k-input-inner:-webkit-autofill:active {
+	-webkit-box-shadow: 0 0 0 71.4286rem var(--input-bg) inset !important;
+	-webkit-text-fill-color: var(--input-text) !important;
+	transition: background-color 5000s ease-in-out 0s;
+}
+
+textarea.form-control {
+	resize: none !important;
+	min-height: 4.6429rem;
+	line-height: 1.4rem !important;
+	text-indent: unset !important;
+	padding: 0.4rem .8rem !important;
+}
+
+input.form-control[data-format]::after {
+	content: attr(data-format);
+	color: var(--muted-text);
+	font-size: 1rem;
+	position: absolute;
+	margin-left: .7143rem;
+}
+
+.form-group .avatar {
+	width: 12.8571rem;
+	height: 12.8571rem;
+}
+
+/*#endregion */
+
+/*#region Form Group Phone Number */
+
+.form-group .phone-number {
+	display: grid;
+	grid-template-columns: 8.75rem 1fr;
+	gap: 0.5rem;
+	position: relative;
+}
+
+	.form-group .phone-number .k-animation-container .k-popup {
+		width: 20rem !important;
+	}
+
+/*#endregion */

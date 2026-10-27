@@ -1,0 +1,732 @@
+/* ============================================================
+   theme.base.css — shared component token layer
+   ============================================================
+   Load order (see _HeaderLayout.cshtml):
+       bootstrap → kendo material → icons → fonts
+       → theme.<name>.min.css   (semantic tokens, light + dark, generated)
+       → theme.base.min.css     (THIS file: component / Bootstrap / Kendo bridge)
+       → style.min.css → kendo/kendo.min.css
+
+   How it works
+   ------------
+   * Each theme file emits ONLY semantic tokens (--bg, --surface, --text,
+     --primary, --success, --header-bg, --drawer-bg …) plus the raw colour
+     scales, for BOTH light and dark mode.
+   * This file maps every component token (buttons, inputs, tables, modals,
+     Bootstrap --bs-* variables, Kendo bridge variables …) onto those
+     semantic tokens. It never hard-codes a colour and never branches on
+     light/dark, so a theme's dark block automatically restyles every control.
+
+   Activating dark / light mode
+   ----------------------------
+       <html class="dark">   or  <html data-theme="dark">   → dark variant
+       <html class="light">  or  <html data-theme="light">  → light variant
+       (the class may also sit on <body> itself)
+   Without a class each theme renders its own default mode: light for most,
+   dark for Midnight Pro, Luxury Gold and Cyber Muted.
+
+   Conventions used below
+   ----------------------
+   --surface          card / panel background
+   --surface-2        subtle panel (status bars, table headers, .bg-light)
+   --surface-3        stronger panel (hover on surface-2, chips, pills)
+   --surface-inverse  "dark panel with light text" in light mode and an
+                      elevated grey in dark mode (--bs-dark / --bs-light bridge)
+   --on-<colour>      text colour with AA contrast on that solid colour
+   --<colour>-subtle  tinted background,  --<colour>-subtle-text its text
+   ============================================================ */
+
+/* ── Fallbacks for markup rendered without a theme class ─────────────────── */
+:root {
+	--drawer-bg-color: var(--drawer-bg, #1e293b);
+	--grid-header-bg-color: var(--header-bg, #1e293b);
+	--grid-header-text: var(--header-text, #f8fafc);
+	--text-light: var(--text-on-inverse, #ffffff);
+	--text-secondary: var(--muted-text, #64748b);
+	--text-dark: var(--text, #1e293b);
+	--text-success: var(--success, #16a34a);
+	--text-danger: var(--danger, #dc2626);
+	--tab-success-bg-color: var(--success, #16a34a);
+	--tab-active-bg-color: var(--primary, #2563eb);
+	--tab-bg-color: var(--neutral-500, #64748b);
+	--bs-active-bg: var(--primary, #2563eb);
+	--bs-submit: var(--success, #16a34a);
+	--table-row-bg-hover: rgba(0, 139, 139, .3);
+	--table-row-bg-selected: rgba(0, 140, 75, .37);
+	--table-row-bg-danger: rgba(221, 60, 76, .31);
+}
+
+[class*="theme-"] {
+	/* ══════════════════════════════════════════════════════
+	   SURFACE / BACKGROUND TOKENS
+	   ══════════════════════════════════════════════════════ */
+	--background-primary: var(--bg);
+	--background-secondary: var(--surface-2);
+	--surface-color: var(--surface);
+	--surface-raised: var(--surface);
+	--surface-overlay: var(--surface);
+	--surface-sunken: var(--bg);
+	--surface-page: var(--bg);
+	--surface-brand-soft: var(--primary-subtle);
+	--border-default: var(--border);
+	--border-subtle: var(--border);
+	--border-color: var(--border);
+	--border-brand: var(--primary);
+	--border-focus: var(--primary);
+
+	/* ══════════════════════════════════════════════════════
+	   TYPOGRAPHY TOKENS
+	   ══════════════════════════════════════════════════════ */
+	--text-default: var(--text);
+	--text-primary: var(--text);
+	--text-muted: var(--muted-text);
+	--text-subtle: var(--muted-text);
+	--text-heading: var(--text);
+	--text-link: var(--primary);
+	--text-link-hover: var(--primary-hover);
+	--text-link-visited: var(--tertiary);
+	--text-disabled: color-mix(in srgb, var(--muted-text) 60%, transparent);
+	--success-color: var(--success);
+	--warning-color: var(--warning);
+	--error-color: var(--danger);
+	--info-color: var(--info);
+
+	/* ══════════════════════════════════════════════════════
+	   LAYOUT REGION TOKENS
+	   ══════════════════════════════════════════════════════ */
+	--header-bg-scrolled: var(--header-bg);
+	--drawer-border: var(--drawer-line);
+	--navbar-bg: var(--surface);
+	--navbar-text: var(--text);
+
+	/* ══════════════════════════════════════════════════════
+	   CARD TOKENS
+	   ══════════════════════════════════════════════════════ */
+	--card-bg: var(--surface);
+	--card-border: var(--border);
+	--card-shadow: var(--shadow);
+	--card-shadow-hover: var(--shadow-lg);
+
+	/* ══════════════════════════════════════════════════════
+	   BUTTON TOKENS
+	   ══════════════════════════════════════════════════════ */
+	--btn-primary-bg: var(--primary);
+	--btn-primary-bg-hover: var(--primary-hover);
+	--btn-primary-text: var(--text-on-primary);
+	--btn-secondary-bg: var(--secondary);
+	--btn-ghost-bg: transparent;
+	--btn-ghost-bg-hover: var(--primary-subtle);
+	--btn-ghost-bg-active: color-mix(in srgb, var(--primary) 20%, transparent);
+	--btn-ghost-text: var(--primary);
+	--btn-ghost-text-hover: var(--primary-hover);
+	--btn-ghost-border: color-mix(in srgb, var(--primary) 40%, transparent);
+	--btn-outline-bg: transparent;
+	--btn-outline-bg-hover: var(--surface-2);
+	--btn-outline-text: var(--text);
+	--btn-outline-border: var(--border-strong);
+	--btn-danger-bg: var(--danger);
+	--btn-danger-bg-hover: color-mix(in srgb, var(--danger) 85%, black);
+	--btn-danger-text: var(--on-danger);
+	--btn-danger-border: var(--danger);
+	--btn-danger-focus-ring: 0 0 0 .2143rem color-mix(in srgb, var(--danger) 35%, transparent);
+	--btn-success-bg: var(--success);
+	--btn-success-bg-hover: color-mix(in srgb, var(--success) 85%, black);
+	--btn-success-text: var(--on-success);
+	--btn-warning-bg: var(--warning);
+	--btn-warning-bg-hover: color-mix(in srgb, var(--warning) 85%, black);
+	--btn-warning-text: var(--on-warning);
+	/* Semantic aliases consumed by kendo.button.css */
+	--btn-primary-color: var(--primary);
+	--btn-secondary-color: var(--secondary);
+	--btn-tertiary-color: var(--tertiary);
+	--btn-success-color: var(--success);
+	--btn-danger-color: var(--danger);
+	--btn-warning-color: var(--warning);
+	--btn-info-color: var(--info);
+	--btn-dark-color: var(--surface-inverse);
+	--btn-light-color: var(--surface-2);
+	--btn-text-light: var(--text-on-inverse);
+
+	/* ══════════════════════════════════════════════════════
+	   INPUT / FORM TOKENS
+	   ══════════════════════════════════════════════════════ */
+	--input-bg-hover: var(--input-bg);
+	--input-bg-disabled: var(--surface-2);
+	--input-bg-readonly: var(--surface-2);
+	--input-border: var(--border-strong);
+	--input-border-hover: var(--muted-text);
+	--input-border-focus: var(--primary);
+	--input-border-error: var(--danger);
+	--input-border-success: var(--success);
+	--input-border-warning: var(--warning);
+	--input-text: var(--text);
+	--input-text-disabled: var(--text-disabled);
+	--input-placeholder: var(--muted-text);
+	--input-radius: 0.375rem;
+	--input-shadow-focus: 0 0 0 .0714rem var(--focus-ring-color);
+	--input-shadow-error: 0 0 0 .0714rem color-mix(in srgb, var(--danger) 30%, transparent);
+	--label-text: var(--text-secondary);
+	--label-text-required: var(--danger);
+	--helper-text: var(--muted-text);
+	--helper-text-error: var(--danger);
+	--helper-text-success: var(--success);
+
+	/* ══════════════════════════════════════════════════════
+	   CHECKBOX / RADIO TOKENS
+	   ══════════════════════════════════════════════════════ */
+	--checkbox-bg: var(--input-bg);
+	--checkbox-border: var(--muted-text);
+	--checkbox-bg-checked: var(--primary);
+	--checkbox-border-checked: var(--primary);
+	--checkbox-checkmark: var(--text-on-primary);
+	--checkbox-focus-ring: 0 0 0 .2143rem var(--focus-ring-color);
+
+	/* ══════════════════════════════════════════════════════
+	   TOGGLE / SWITCH TOKENS
+	   ══════════════════════════════════════════════════════ */
+	--toggle-track-off: var(--border-strong);
+	--toggle-track-on: var(--primary);
+	--toggle-track-disabled: var(--surface-3);
+	--toggle-thumb: var(--surface);
+	--toggle-thumb-shadow: 0 .0714rem .2143rem rgba(0, 0, 0, .2);
+
+	/* ══════════════════════════════════════════════════════
+	   SELECT TOKENS
+	   ══════════════════════════════════════════════════════ */
+	--select-bg: var(--input-bg);
+	--select-border: var(--border-strong);
+	--select-border-focus: var(--primary);
+	--select-text: var(--text);
+	--select-option-hover: var(--surface-hover);
+	--select-option-selected: var(--primary-subtle);
+	--select-text-selected: var(--primary-subtle-text);
+
+	/* ══════════════════════════════════════════════════════
+	   RANGE / SLIDER TOKENS
+	   ══════════════════════════════════════════════════════ */
+	--range-track: var(--surface-3);
+	--range-fill: var(--primary);
+	--range-thumb: var(--primary);
+	--range-thumb-hover: var(--primary-hover);
+
+	/* ══════════════════════════════════════════════════════
+	   BADGE / TAG TOKENS
+	   ══════════════════════════════════════════════════════ */
+	--badge-primary-bg: var(--primary-subtle);
+	--badge-primary-text: var(--primary-subtle-text);
+	--badge-primary-border: color-mix(in srgb, var(--primary) 30%, transparent);
+	--badge-secondary-bg: var(--secondary);
+	--badge-secondary-text: var(--on-secondary);
+	--badge-secondary-border: var(--secondary);
+	--badge-tertiary-bg: var(--tertiary);
+	--badge-tertiary-text: var(--on-tertiary);
+	--badge-tertiary-border: var(--tertiary);
+	--badge-success-bg: var(--success);
+	--badge-success-text: var(--on-success);
+	--badge-success-border: var(--success);
+	--badge-error-bg: var(--danger);
+	--badge-error-text: var(--on-danger);
+	--badge-error-border: var(--danger);
+	--badge-warning-bg: var(--warning);
+	--badge-warning-text: var(--on-warning);
+	--badge-warning-border: var(--warning);
+	--badge-info-bg: var(--info);
+	--badge-info-text: var(--on-info);
+	--badge-info-border: var(--info);
+	--badge-neutral-bg: var(--surface-2);
+	--badge-neutral-text: var(--muted-text);
+	--badge-neutral-border: var(--border);
+
+	/* ══════════════════════════════════════════════════════
+	   ALERT / TOAST TOKENS
+	   ══════════════════════════════════════════════════════ */
+	--alert-success-bg: var(--success-subtle);
+	--alert-success-text: var(--success-subtle-text);
+	--alert-success-title: var(--success-subtle-text);
+	--alert-success-border: color-mix(in srgb, var(--success) 40%, transparent);
+	--alert-warning-bg: var(--warning-subtle);
+	--alert-warning-text: var(--warning-subtle-text);
+	--alert-warning-title: var(--warning-subtle-text);
+	--alert-warning-border: color-mix(in srgb, var(--warning) 40%, transparent);
+	--alert-error-bg: var(--danger-subtle);
+	--alert-error-text: var(--danger-subtle-text);
+	--alert-error-title: var(--danger-subtle-text);
+	--alert-error-border: color-mix(in srgb, var(--danger) 40%, transparent);
+	--alert-info-bg: var(--info-subtle);
+	--alert-info-text: var(--info-subtle-text);
+	--alert-info-title: var(--info-subtle-text);
+	--alert-info-border: color-mix(in srgb, var(--info) 40%, transparent);
+	--toast-bg: var(--surface-inverse);
+	--toast-text: var(--text-on-inverse);
+	--toast-border: color-mix(in srgb, var(--text-on-inverse) 15%, transparent);
+	--toast-shadow: var(--shadow-lg);
+
+	/* ══════════════════════════════════════════════════════
+	   TABLE TOKENS
+	   ══════════════════════════════════════════════════════ */
+	--table-header-bg: var(--surface-2);
+	--table-header-text: var(--text-secondary);
+	--table-header-border: var(--border);
+	--table-header-sorted: var(--primary-subtle);
+	--table-row-bg: var(--surface);
+	--table-row-bg-alt: var(--surface-2);
+	--table-row-bg-hover: color-mix(in srgb, var(--primary) 10%, transparent);
+	--table-row-bg-selected: color-mix(in srgb, var(--success) 22%, transparent);
+	--table-row-bg-danger: color-mix(in srgb, var(--danger) 18%, transparent);
+	--table-row-border: var(--border);
+	--table-text: var(--text);
+	--table-text-muted: var(--muted-text);
+
+	/* ══════════════════════════════════════════════════════
+	   MODAL / DIALOG TOKENS
+	   ══════════════════════════════════════════════════════ */
+	--modal-bg: var(--surface);
+	--modal-overlay: var(--overlay);
+	--modal-border: var(--border);
+	--modal-shadow: var(--shadow-lg);
+	--modal-radius: 1rem;
+	--modal-header-bg: var(--surface-2);
+	--modal-header-border: var(--border);
+	--modal-header-text: var(--text);
+	--modal-footer-bg: var(--surface-2);
+	--modal-footer-border: var(--border);
+	--modal-close-bg: transparent;
+	--modal-close-bg-hover: var(--surface-3);
+	--modal-close-icon: var(--muted-text);
+
+	/* ══════════════════════════════════════════════════════
+	   TOOLTIP / POPOVER TOKENS
+	   ══════════════════════════════════════════════════════ */
+	--tooltip-bg: var(--surface-inverse);
+	--tooltip-text: var(--text-on-inverse);
+	--tooltip-border: color-mix(in srgb, var(--text-on-inverse) 15%, transparent);
+	--tooltip-shadow: 0 .2857rem .8571rem rgba(0, 0, 0, .15), 0 .1429rem .2857rem rgba(0, 0, 0, .1);
+	--tooltip-radius: 0.375rem;
+	--popover-bg: var(--surface);
+	--popover-text: var(--text);
+	--popover-border: var(--border);
+	--popover-shadow: var(--shadow-lg);
+	--popover-radius: 0.5rem;
+
+	/* ══════════════════════════════════════════════════════
+	   TAB TOKENS
+	   ══════════════════════════════════════════════════════ */
+	--tab-list-bg: transparent;
+	--tab-list-border: var(--border);
+	--tab-bg: transparent;
+	--tab-bg-hover: var(--surface-hover);
+	--tab-bg-active: var(--primary-subtle);
+	--tab-text: var(--muted-text);
+	--tab-text-hover: var(--text);
+	--tab-text-active: var(--primary);
+	--tab-border-active: var(--primary);
+	--tab-indicator: var(--primary);
+	--tab-pill-bg: var(--surface-2);
+	--tab-pill-bg-active: var(--surface);
+	--tab-pill-text: var(--text-secondary);
+	--tab-pill-text-active: var(--primary);
+	--tab-pill-shadow-active: 0 .0714rem .2857rem rgba(0, 0, 0, .1);
+
+	/* ══════════════════════════════════════════════════════
+	   PROGRESS / STEPS TOKENS
+	   ══════════════════════════════════════════════════════ */
+	--progress-bg: var(--surface-3);
+	--progress-radius: 714.2143rem;
+	--progress-fill: var(--primary);
+	--progress-fill-secondary: var(--secondary);
+	--progress-fill-success: var(--success);
+	--progress-fill-warning: var(--warning);
+	--progress-fill-error: var(--danger);
+	--step-bg: var(--surface-3);
+	--step-bg-complete: var(--primary);
+	--step-bg-current: var(--surface);
+	--step-border-current: var(--primary);
+	--step-text: var(--muted-text);
+	--step-text-complete: var(--text-on-primary);
+	--step-text-current: var(--primary);
+	--step-connector: var(--border-strong);
+	--step-connector-done: var(--primary);
+
+	/* ══════════════════════════════════════════════════════
+	   AVATAR TOKENS
+	   ══════════════════════════════════════════════════════ */
+	--avatar-bg: var(--primary-subtle);
+	--avatar-text: var(--primary-subtle-text);
+	--avatar-border: color-mix(in srgb, var(--primary) 30%, transparent);
+	--avatar-border-online: var(--success);
+	--avatar-border-offline: var(--border-strong);
+	--avatar-border-busy: var(--danger);
+	--avatar-border-away: var(--warning);
+	--avatar-shadow: 0 .1429rem .5714rem rgba(0, 0, 0, .1);
+
+	/* ══════════════════════════════════════════════════════
+	   BREADCRUMB TOKENS
+	   ══════════════════════════════════════════════════════ */
+	--breadcrumb-text: var(--muted-text);
+	--breadcrumb-text-hover: var(--primary);
+	--breadcrumb-text-active: var(--text);
+	--breadcrumb-separator: var(--border-strong);
+
+	/* ══════════════════════════════════════════════════════
+	   PAGINATION TOKENS
+	   ══════════════════════════════════════════════════════ */
+	--pagination-bg: var(--surface);
+	--pagination-bg-hover: var(--surface-hover);
+	--pagination-bg-active: var(--primary);
+	--pagination-text: var(--text-secondary);
+	--pagination-text-hover: var(--primary);
+	--pagination-text-active: var(--text-on-primary);
+	--pagination-border: var(--border-strong);
+	--pagination-border-active: var(--primary);
+	--pagination-radius: 0.375rem;
+	--pagination-disabled-text: var(--text-disabled);
+
+	/* ══════════════════════════════════════════════════════
+	   CHIP TOKENS
+	   ══════════════════════════════════════════════════════ */
+	--chip-bg: var(--surface-2);
+	--chip-bg-hover: var(--surface-3);
+	--chip-bg-selected: var(--primary-subtle);
+	--chip-bg-selected-hover: color-mix(in srgb, var(--primary) 25%, transparent);
+	--chip-text: var(--text-secondary);
+	--chip-text-selected: var(--primary-subtle-text);
+	--chip-border: var(--border-strong);
+	--chip-border-selected: color-mix(in srgb, var(--primary) 40%, transparent);
+	--chip-remove-hover: var(--muted-text);
+
+	/* ══════════════════════════════════════════════════════
+	   ACCORDION TOKENS
+	   ══════════════════════════════════════════════════════ */
+	--accordion-bg: var(--surface);
+	--accordion-bg-hover: var(--surface-hover);
+	--accordion-bg-open: var(--primary-subtle);
+	--accordion-text: var(--text);
+	--accordion-text-open: var(--primary-subtle-text);
+	--accordion-border: var(--border);
+	--accordion-icon: var(--muted-text);
+	--accordion-icon-open: var(--primary);
+	--accordion-content-text: var(--text-secondary);
+
+	/* ══════════════════════════════════════════════════════
+	   DROPDOWN TOKENS
+	   ══════════════════════════════════════════════════════ */
+	--dropdown-bg: var(--surface);
+	--dropdown-border: var(--border);
+	--dropdown-shadow: var(--shadow-lg);
+	--dropdown-radius: 0.5rem;
+	--dropdown-item-bg-hover: var(--surface-hover);
+	--dropdown-item-bg-active: var(--primary-subtle);
+	--dropdown-item-text: var(--text);
+	--dropdown-item-text-hover: var(--text);
+	--dropdown-item-text-active: var(--primary-subtle-text);
+	--dropdown-item-text-danger: var(--danger);
+	--dropdown-item-bg-danger: var(--danger-subtle);
+	--dropdown-divider: var(--border);
+	--dropdown-group-label: var(--muted-text);
+
+	/* ══════════════════════════════════════════════════════
+	   SKELETON / SCROLLBAR / DIVIDER / FOCUS
+	   ══════════════════════════════════════════════════════ */
+	--skeleton-base: var(--surface-3);
+	--skeleton-highlight: var(--surface-2);
+	--scrollbar-width: .4286rem;
+	--scrollbar-track: var(--surface-2);
+	--scrollbar-thumb: var(--border-strong);
+	--scrollbar-thumb-hover: var(--primary);
+	--divider-color: var(--border);
+	--divider-color-strong: var(--border-strong);
+	--divider-text: var(--muted-text);
+	--focus-ring: 0 0 0 .2143rem var(--focus-ring-color);
+	--focus-ring-offset: 0 0 0 .1429rem var(--surface), 0 0 0 .2857rem var(--primary);
+
+	/* ══════════════════════════════════════════════════════
+	   CODE / PRE TOKENS
+	   ══════════════════════════════════════════════════════ */
+	--code-bg: var(--primary-subtle);
+	--code-text: var(--primary-subtle-text);
+	--code-border: color-mix(in srgb, var(--primary) 30%, transparent);
+	--pre-bg: var(--surface-inverse);
+	--pre-text: var(--text-on-inverse);
+	--pre-border: color-mix(in srgb, var(--text-on-inverse) 15%, transparent);
+	--pre-keyword: var(--tertiary);
+	--pre-string: var(--success);
+	--pre-number: var(--warning);
+	--pre-comment: var(--muted-text);
+
+	/* ══════════════════════════════════════════════════════
+	   STAT / KPI · TIMELINE · CHART
+	   ══════════════════════════════════════════════════════ */
+	--stat-value-text: var(--text);
+	--stat-label-text: var(--muted-text);
+	--stat-positive: var(--success);
+	--stat-positive-bg: var(--success-subtle);
+	--stat-negative: var(--danger);
+	--stat-negative-bg: var(--danger-subtle);
+	--stat-neutral: var(--muted-text);
+	--stat-icon-bg: var(--primary-subtle);
+	--stat-icon-color: var(--primary);
+	--timeline-line: var(--border);
+	--timeline-dot: var(--primary);
+	--timeline-dot-border: var(--surface);
+	--timeline-dot-complete: var(--success);
+	--timeline-dot-pending: var(--border-strong);
+	--timeline-text: var(--text);
+	--timeline-text-muted: var(--muted-text);
+	--timeline-connector: color-mix(in srgb, var(--primary) 35%, transparent);
+	--chart-color-1: var(--primary);
+	--chart-color-2: var(--secondary);
+	--chart-color-3: var(--tertiary);
+	--chart-color-4: var(--success);
+	--chart-color-5: var(--warning);
+	--chart-color-6: var(--danger);
+	--chart-color-7: var(--info);
+	--chart-grid: var(--border);
+	--chart-axis: var(--border-strong);
+	--chart-axis-text: var(--muted-text);
+	--chart-tooltip-bg: var(--surface-inverse);
+	--chart-tooltip-text: var(--text-on-inverse);
+	--chart-bg: var(--surface);
+
+	/* ══════════════════════════════════════════════════════
+	   CALENDAR / DATE PICKER TOKENS
+	   ══════════════════════════════════════════════════════ */
+	--calendar-bg: var(--surface);
+	--calendar-border: var(--border);
+	--calendar-header-bg: var(--surface-2);
+	--calendar-header-text: var(--text);
+	--calendar-day-hover: var(--surface-hover);
+	--calendar-day-selected: var(--primary);
+	--calendar-day-selected-text: var(--text-on-primary);
+	--calendar-day-today: var(--primary-subtle);
+	--calendar-day-today-text: var(--primary-subtle-text);
+	--calendar-day-outside: var(--text-disabled);
+	--calendar-day-range: var(--primary-subtle);
+	--calendar-day-range-end: var(--primary);
+
+	/* ══════════════════════════════════════════════════════
+	   DROPZONE / FILE UPLOAD · STATUS INDICATORS
+	   ══════════════════════════════════════════════════════ */
+	--dropzone-bg: var(--surface-2);
+	--dropzone-bg-hover: var(--primary-subtle);
+	--dropzone-bg-active: var(--primary-subtle);
+	--dropzone-border: var(--border-strong);
+	--dropzone-border-hover: var(--primary);
+	--dropzone-border-active: var(--primary);
+	--dropzone-icon: var(--muted-text);
+	--dropzone-icon-active: var(--primary);
+	--dropzone-text: var(--text-secondary);
+	--dropzone-text-link: var(--primary);
+	--indicator-default: var(--border-strong);
+	--indicator-primary: var(--primary);
+	--indicator-success: var(--success);
+	--indicator-warning: var(--warning);
+	--indicator-error: var(--danger);
+	--indicator-info: var(--info);
+
+	/* ══════════════════════════════════════════════════════
+	   BOOTSTRAP VARIABLE BRIDGE
+	   Every Bootstrap 5.3 component reads these; nothing here
+	   is a literal colour, so both modes come for free.
+	   ══════════════════════════════════════════════════════ */
+	--bs-primary: var(--primary);
+	--bs-secondary: var(--secondary);
+	--bs-success: var(--success);
+	--bs-info: var(--info);
+	--bs-warning: var(--warning);
+	--bs-danger: var(--danger);
+	--bs-light: var(--text-on-inverse);     /* app-wide shorthand for "light text on a dark panel" */
+	--bs-dark: var(--surface-inverse);      /* app-wide shorthand for "dark panel" */
+	--bs-default: var(--secondary);
+	--bs-primary-rgb: var(--primary-rgb);
+	--bs-secondary-rgb: var(--secondary-rgb);
+	--bs-success-rgb: var(--success-rgb);
+	--bs-info-rgb: var(--info-rgb);
+	--bs-warning-rgb: var(--warning-rgb);
+	--bs-danger-rgb: var(--danger-rgb);
+	--bs-light-rgb: var(--surface-2-rgb);   /* .bg-light panels follow the theme (see .text-light fix below) */
+	--bs-dark-rgb: var(--text-rgb);         /* .text-dark / .border-dark stay readable in both modes */
+	--bs-gray: var(--muted-text);
+	--bs-gray-100: var(--neutral-50);
+	--bs-gray-200: var(--neutral-100);
+	--bs-gray-300: var(--neutral-200);
+	--bs-gray-400: var(--neutral-300);
+	--bs-gray-500: var(--neutral-400);
+	--bs-gray-600: var(--neutral-500);
+	--bs-gray-700: var(--neutral-600);
+	--bs-gray-800: var(--neutral-700);
+	--bs-gray-900: var(--neutral-800);
+	--bs-gray-dark: var(--neutral-700);
+	--bs-body-color: var(--text);
+	--bs-body-color-rgb: var(--text-rgb);
+	--bs-body-bg: var(--bg);
+	--bs-body-bg-rgb: var(--bg-rgb);
+	--bs-secondary-color: var(--muted-text);
+	--bs-secondary-color-rgb: var(--muted-text-rgb);
+	--bs-secondary-bg: var(--surface-2);
+	--bs-secondary-bg-rgb: var(--surface-2-rgb);
+	--bs-tertiary-color: var(--muted-text);
+	--bs-tertiary-color-rgb: var(--muted-text-rgb);
+	--bs-tertiary-bg: var(--surface);
+	--bs-tertiary-bg-rgb: var(--surface-rgb);
+	--bs-emphasis-color: var(--text);
+	--bs-emphasis-color-rgb: var(--text-rgb);
+	--bs-heading-color: var(--text);
+	--bs-border-color: var(--border);
+	--bs-border-color-translucent: color-mix(in srgb, var(--text) 12%, transparent);
+	--bs-link-color: var(--primary);
+	--bs-link-color-rgb: var(--primary-rgb);
+	--bs-link-hover-color: var(--primary-hover);
+	--bs-code-color: var(--primary-subtle-text);
+	--bs-highlight-bg: var(--warning-subtle);
+	--bs-focus-ring-color: var(--focus-ring-color);
+	--bs-primary-text-emphasis: var(--primary-subtle-text);
+	--bs-primary-bg-subtle: var(--primary-subtle);
+	--bs-primary-border-subtle: color-mix(in srgb, var(--primary) 40%, transparent);
+	--bs-secondary-text-emphasis: var(--text-secondary);
+	--bs-secondary-bg-subtle: var(--surface-2);
+	--bs-secondary-border-subtle: var(--border-strong);
+	--bs-success-text-emphasis: var(--success-subtle-text);
+	--bs-success-bg-subtle: var(--success-subtle);
+	--bs-success-border-subtle: color-mix(in srgb, var(--success) 40%, transparent);
+	--bs-info-text-emphasis: var(--info-subtle-text);
+	--bs-info-bg-subtle: var(--info-subtle);
+	--bs-info-border-subtle: color-mix(in srgb, var(--info) 40%, transparent);
+	--bs-warning-text-emphasis: var(--warning-subtle-text);
+	--bs-warning-bg-subtle: var(--warning-subtle);
+	--bs-warning-border-subtle: color-mix(in srgb, var(--warning) 40%, transparent);
+	--bs-danger-text-emphasis: var(--danger-subtle-text);
+	--bs-danger-bg-subtle: var(--danger-subtle);
+	--bs-danger-border-subtle: color-mix(in srgb, var(--danger) 40%, transparent);
+	--bs-light-text-emphasis: var(--text-secondary);
+	--bs-light-bg-subtle: var(--surface);
+	--bs-light-border-subtle: var(--border);
+	--bs-dark-text-emphasis: var(--text);
+	--bs-dark-bg-subtle: var(--surface-3);
+	--bs-dark-border-subtle: var(--border-strong);
+	--bs-form-valid-color: var(--success);
+	--bs-form-valid-border-color: var(--success);
+	--bs-form-invalid-color: var(--danger);
+	--bs-form-invalid-border-color: var(--danger);
+
+	/* ══════════════════════════════════════════════════════
+	   KENDO APPLICATION BRIDGE
+	   Variables consumed by kendo.*.css, style.*.css and the
+	   scoped *.cshtml.css files.
+	   ══════════════════════════════════════════════════════ */
+	--drawer-bg-color: var(--drawer-bg);
+	--text-light: var(--text-on-inverse);
+	--text-dark: var(--text);
+	--text-success: var(--success);
+	--text-danger: var(--danger);
+	--grid-header-bg-color: var(--header-bg);
+	--grid-header-text: var(--header-text);
+	--bs-submit: var(--success);
+	--bs-active-bg: var(--primary);
+	--tab-success-bg-color: var(--success);
+	--tab-active-bg-color: var(--primary);
+	--tab-bg-color: var(--neutral-500);
+	--kendo-body-text: var(--text);
+	--kendo-body-bg: var(--bg);
+	--kendo-component-border: var(--border);
+	--kendo-disabled-text: var(--text-disabled);
+	--kendo-disabled-border: var(--border);
+	--kendo-primary-60: var(--primary);
+	--kendo-primary-100: var(--primary-subtle);
+}
+
+
+/* ============================================================
+   Page-level element styles
+   ============================================================
+   Header / footer / drawer regions and the handful of Bootstrap
+   utilities whose literal colours would otherwise break themes
+   with light chrome or dark mode.
+   ============================================================ */
+[class*="theme-"] .page-header,
+[class*="theme-"] .app-header {
+	background-color: var(--header-bg);
+	color: var(--header-text);
+	border-bottom: .0714rem solid var(--header-border);
+}
+
+[class*="theme-"] footer,
+[class*="theme-"] .app-footer {
+	background-color: var(--footer-bg);
+	color: var(--footer-text);
+	border-top-color: var(--footer-border) !important;
+}
+
+	[class*="theme-"] footer a,
+	[class*="theme-"] .app-footer a {
+		color: var(--footer-link);
+	}
+
+/* ".text-light" is used app-wide as "light text on a dark panel". Bootstrap
+   derives it from --bs-light-rgb, which now follows --surface-2 so that
+   ".bg-light" panels adapt to the theme; keep the TEXT utility light. */
+[class*="theme-"] .text-light {
+	color: var(--text-on-inverse) !important;
+}
+
+	/* … except inside the header / drawer, where it must follow the region
+	   text colour (some themes ship a light header). */
+	[class*="theme-"] .app-header .text-light,
+	[class*="theme-"] .page-header .text-light,
+	[class*="theme-"] .app-header > div > a {
+		color: var(--header-text) !important;
+	}
+
+	[class*="theme-"] .drawer-container .text-light {
+		color: var(--drawer-text) !important;
+	}
+
+	/* … and on solid status backgrounds, where the "on-colour" wins. */
+	[class*="theme-"] .bg-primary.text-light { color: var(--text-on-primary) !important; }
+	[class*="theme-"] .bg-secondary.text-light { color: var(--on-secondary) !important; }
+	[class*="theme-"] .bg-success.text-light { color: var(--on-success) !important; }
+	[class*="theme-"] .bg-warning.text-light { color: var(--on-warning) !important; }
+	[class*="theme-"] .bg-danger.text-light { color: var(--on-danger) !important; }
+	[class*="theme-"] .bg-info.text-light { color: var(--on-info) !important; }
+	[class*="theme-"] .k-notification .text-light { color: inherit !important; }
+
+[class*="theme-"] .bg-white {
+	background-color: var(--surface) !important;
+}
+
+[class*="theme-"] .text-bg-primary { color: var(--text-on-primary) !important; }
+[class*="theme-"] .text-bg-success { color: var(--on-success) !important; }
+[class*="theme-"] .text-bg-warning { color: var(--on-warning) !important; }
+[class*="theme-"] .text-bg-danger { color: var(--on-danger) !important; }
+[class*="theme-"] .text-bg-info { color: var(--on-info) !important; }
+[class*="theme-"] .text-bg-light { color: var(--text) !important; }
+[class*="theme-"] .text-bg-dark { color: var(--text-on-inverse) !important; }
+
+[class*="theme-"] .btn-primary { --bs-btn-color: var(--text-on-primary); --bs-btn-hover-color: var(--text-on-primary); --bs-btn-active-color: var(--text-on-primary); --bs-btn-hover-bg: var(--primary-hover); --bs-btn-hover-border-color: var(--primary-hover); }
+[class*="theme-"] .btn-success { --bs-btn-color: var(--on-success); --bs-btn-hover-color: var(--on-success); --bs-btn-active-color: var(--on-success); }
+[class*="theme-"] .btn-warning { --bs-btn-color: var(--on-warning); --bs-btn-hover-color: var(--on-warning); --bs-btn-active-color: var(--on-warning); }
+[class*="theme-"] .btn-danger { --bs-btn-color: var(--on-danger); --bs-btn-hover-color: var(--on-danger); --bs-btn-active-color: var(--on-danger); }
+[class*="theme-"] .btn-info { --bs-btn-color: var(--on-info); --bs-btn-hover-color: var(--on-info); --bs-btn-active-color: var(--on-info); }
+[class*="theme-"] .btn-light { --bs-btn-bg: var(--surface-2); --bs-btn-border-color: var(--surface-2); --bs-btn-color: var(--text); --bs-btn-hover-bg: var(--surface-3); --bs-btn-hover-border-color: var(--surface-3); --bs-btn-hover-color: var(--text); }
+[class*="theme-"] .btn-dark { --bs-btn-bg: var(--surface-inverse); --bs-btn-border-color: var(--surface-inverse); --bs-btn-color: var(--text-on-inverse); --bs-btn-hover-color: var(--text-on-inverse); }
+
+[class*="theme-"] .badge.bg-primary { color: var(--text-on-primary); }
+[class*="theme-"] .badge.bg-success { color: var(--on-success); }
+[class*="theme-"] .badge.bg-warning { color: var(--on-warning); }
+[class*="theme-"] .badge.bg-danger { color: var(--on-danger); }
+[class*="theme-"] .badge.bg-info { color: var(--on-info); }
+
+[class*="theme-"] .form-control::placeholder,
+[class*="theme-"] .form-select::placeholder {
+	color: var(--input-placeholder);
+}
+
+[class*="theme-"] .form-control:disabled,
+[class*="theme-"] .form-control[readonly] {
+	background-color: var(--input-bg-disabled);
+	color: var(--input-text-disabled);
+}
+
+[class*="theme-"] hr {
+	color: var(--divider-color);
+	opacity: 1;
+}

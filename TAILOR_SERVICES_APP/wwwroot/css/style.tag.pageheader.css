@@ -1,0 +1,69 @@
+/*#region Typography */
+
+.eyebrow,
+.pg-overline {
+	font-size: .875rem;
+	font-weight: var(--font-weight-extra-bold);
+	letter-spacing: .16rem;
+	text-transform: uppercase;
+	color: var(--ds-accent-text);
+}
+
+.muted {
+	color: var(--ds-muted);
+}
+
+.hint {
+	display: block;
+	margin-top: .375rem;
+	font-size: .65rem;
+	line-height: 1.5;
+	color: var(--ds-muted);
+}
+
+/*#endregion */
+
+/*#region Page header */
+
+.pg-head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: 1.25rem;
+}
+
+	.pg-head .pg-text {
+		min-width: 0;
+	}
+
+	.pg-head .pg-title {
+		margin: .375rem 0;
+		font-size: 1.8rem;
+		line-height: 1.25;
+		letter-spacing: -.07rem;
+		font-weight: var(--font-weight-bold);
+		color: var(--ds-ink);
+	}
+
+	.pg-head .pg-desc {
+		width: max(80%, 70rem);
+		margin: 0;
+		font-size: .875rem;
+		line-height: 1.65;
+		color: var(--ds-muted);
+	}
+
+	.pg-head .pg-actions {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: .5625rem;
+	}
+
+		.pg-head .pg-actions .form-group {
+			padding: 0 !important;
+		}
+
+/*#endregion */
+

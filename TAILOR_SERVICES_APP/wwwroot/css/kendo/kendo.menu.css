@@ -1,0 +1,84 @@
+/*#region Menu Style */
+
+.k-menu {
+    font-family: inherit !important;
+}
+
+    .k-menu.k-context-menu .k-menu-link {
+        padding: 0;
+        padding-block: 0.5rem;
+        padding-inline: 0.75rem;
+    }
+
+        .k-menu.k-context-menu .k-menu-link:hover {
+            color: inherit !important;
+        }
+
+        .k-menu.k-context-menu .k-menu-link .k-icon {
+            line-height: 1;
+        }
+
+        .k-menu.k-context-menu .k-menu-link .k-menu-link-text {
+            font-family: var(--font-family) !important;
+            font-size: 1rem;
+            line-height: 1;
+            font-weight: var(--font-weight-semi-bold);
+            font-style: normal;
+            overflow: visible;
+        }
+
+/*#endregion */
+
+/*#region Dropdown Button Menu */
+
+.k-menu-popup.k-dropdown-button-menu {
+    min-width: 200px;
+    margin-top: 4px;
+    padding: 4px;
+    border: 1px solid var(--bs-border-color-translucent, rgba(128, 128, 128, .25));
+    border-radius: 8px;
+    background-color: var(--bs-body-bg);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .25);
+}
+
+    .k-menu-popup.k-dropdown-button-menu .k-menu-group {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        padding: 0;
+        border: none;
+        background: transparent;
+        box-shadow: none;
+    }
+
+    .k-menu-popup.k-dropdown-button-menu .k-menu-link {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        border-radius: 6px;
+        color: var(--bs-body-color);
+        font-family: var(--font-family);
+        font-weight: var(--font-weight-semi-bold);
+        background: transparent;
+        opacity: 1;
+        white-space: nowrap;
+        cursor: pointer;
+        transition: background-color .12s ease, color .12s ease;
+    }
+
+        .k-menu-popup.k-dropdown-button-menu .k-menu-link:hover,
+        .k-menu-popup.k-dropdown-button-menu .k-item.k-focus > .k-menu-link {
+            background-color: var(--kendo-color-primary, var(--bs-primary));
+            color: var(--kendo-color-on-primary, #fff);
+            box-shadow: none;
+        }
+
+    .k-menu-popup.k-dropdown-button-menu .k-item.k-disabled > .k-menu-link {
+        opacity: .45;
+        cursor: default;
+        background: transparent;
+        color: var(--bs-secondary-color);
+    }
+
+/*#endregion */

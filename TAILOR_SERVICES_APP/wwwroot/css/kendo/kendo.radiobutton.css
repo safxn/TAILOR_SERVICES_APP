@@ -1,0 +1,47 @@
+/*#region Kendo Radio Button */
+
+.k-radio {
+    width: 1.75rem;
+    height: 1.75rem;
+    border: none;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+    .k-radio:disabled::before {
+        color: var(--text-disabled);
+    }
+
+    .k-radio::before {
+        color: var(--text-secondary);
+        font-family: var(--font-family-regular-icon);
+        font-size: 1.25rem;
+    }
+
+    .k-radio::before {
+        content: '\e409';
+    }
+
+    .k-radio:checked {
+        border: none;
+        background: no-repeat;
+    }
+
+        .k-radio:checked:disabled {
+            background-color: transparent;
+        }
+
+        .k-radio:checked::before {
+            content: '\e674';
+            color: var(--primary);
+        }
+
+        .k-radio:checked:disabled::before {
+            color: var(--text-disabled);
+        }
+
+/*#endregion */

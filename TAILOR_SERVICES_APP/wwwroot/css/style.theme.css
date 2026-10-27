@@ -1,0 +1,119 @@
+/*#region Root Style */
+
+/*
+   NOTE: Color-bearing Bootstrap variables are intentionally NOT redefined
+   here. theme.base.css already builds the full --bs-* bridge from the
+   active theme's tokens, scoped to [class*="theme-"]. Redeclaring literal
+   hex values at :root would win the cascade (style.min.css loads after
+   the theme files) and silently lock every theme to one fixed palette.
+   Only structural / non-color values live here.
+*/
+:root,
+[data-bs-theme=light] {
+    /* ========== BASE COLORS (fixed named-color utilities, theme-independent) ========== */
+    --bs-blue: #2563eb;
+    --bs-indigo: #4f46e5;
+    --bs-purple: #7c3aed;
+    --bs-pink: #db2777;
+    --bs-red: #dc2626;
+    --bs-orange: #ea580c;
+    --bs-yellow: #eab308;
+    --bs-green: #16a34a;
+    --bs-teal: #0d9488;
+    --bs-cyan: #0891b2;
+    --bs-black: #000;
+    --bs-white: #fff;
+    /* ========== RGB UTILITIES ========== */
+    --bs-white-rgb: 255, 255, 255;
+    --bs-black-rgb: 0, 0, 0;
+    /* ========== TYPOGRAPHY ========== */
+    --bs-font-sans-serif: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+    /* ========== BODY ========== */
+    --bs-body-font-family: var(--bs-font-sans-serif);
+    --bs-body-font-size: 1rem;
+    --bs-body-font-weight: 400;
+    --bs-body-line-height: 1.5;
+    /* ========== HEADINGS ========== */
+    --bs-heading-color: inherit;
+    /* ========== LINKS ========== */
+    --bs-link-decoration: underline;
+    /* ========== BORDERS ========== */
+    --bs-border-width: .0714rem;
+    --bs-border-style: solid;
+    --bs-border-radius: 0.375rem;
+    --bs-border-radius-sm: 0.25rem;
+    --bs-border-radius-lg: 0.5rem;
+    --bs-border-radius-xl: 1rem;
+    --bs-border-radius-xxl: 2rem;
+    --bs-border-radius-2xl: var(--bs-border-radius-xxl);
+    --bs-border-radius-pill: 50rem;
+    /* ========== BOX SHADOWS ========== */
+    --bs-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    --bs-box-shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    --bs-box-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+    --bs-box-shadow-inset: inset 0 .0714rem .1429rem rgba(0, 0, 0, 0.075);
+    /* ========== FOCUS RING ========== */
+    --bs-focus-ring-width: 0.25rem;
+    --bs-focus-ring-opacity: 0.25;
+    /* --bs-focus-ring-color is supplied per-theme by theme.base.css */
+}
+
+:root {
+    --fs-scale-min: .9;
+    --fs-scale-max: 1.15;
+    --fs-fluid: calc(0.8vw + .6rem);
+    --fb-scale-min: 0.7;
+    --fb-scale-max: 1.1;
+    --fb-fluid: calc(1vw + 0.75rem);
+}
+
+/*#endregion */
+
+/*
+   --ds-* color tokens are re-declared on the theme scope so var() resolves
+   against the active theme's tokens (at :root alone they fall back to the
+   light hex values and never follow theme / dark mode).
+*/
+:root,
+[class*="theme-"] {
+	--ds-radius-card: .875rem;
+	--ds-radius-control: .5625rem;
+	--ds-radius-pill: .4375rem;
+	--ds-shadow: 0 .3125rem 1.5rem rgba(12, 36, 52, .035);
+	--ds-gap: 1.0625rem;
+	--ds-line: var(--border, #e7edf1);
+	--ds-soft: var(--surface-2, #f8fafb);
+	--ds-ink: var(--text, #162b3b);
+	--ds-muted: var(--muted-text, #7f91a0);
+	--ds-accent: var(--primary, #079d8a);
+	--ds-accent-soft: var(--primary-subtle, #e6f7f3);
+	--ds-accent-text: var(--primary-subtle-text, #067c70);
+}
+
+/*#region Dark Mode */
+
+.dark [class*="theme-"],
+.dark[class*="theme-"],
+[data-theme="dark"] [class*="theme-"],
+[class*="theme-"][data-theme="dark"],
+[data-bs-theme=dark] {
+	/* ========== BOX SHADOWS (stronger on dark surfaces) ========== */
+	--bs-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.45);
+	--bs-box-shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.35);
+	--bs-box-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.55);
+	--bs-box-shadow-inset: inset 0 .0714rem .1429rem rgba(0, 0, 0, 0.35);
+	--bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0));
+	/* ========== DESIGN SYSTEM ========== */
+	--ds-shadow: 0 .3125rem 1.5rem rgba(0, 0, 0, .35);
+	--ds-line: var(--border, #2f3f4c);
+	--ds-soft: var(--surface-2, #1e2a33);
+	--ds-ink: var(--text, #e8eef2);
+	--ds-muted: var(--muted-text, #8fa3b2);
+	--ds-accent: var(--primary, #2dd4bf);
+	--ds-accent-soft: var(--primary-subtle, #12332f);
+	--ds-accent-text: var(--primary-subtle-text, #5eead4);
+}
+
+/*#endregion */

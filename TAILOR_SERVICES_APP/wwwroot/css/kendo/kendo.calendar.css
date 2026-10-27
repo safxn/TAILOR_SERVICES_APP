@@ -1,0 +1,115 @@
+
+/*#region Kendo Calendar PopUp */
+
+.k-animation-container:has(.k-calendar-container.k-popup) {
+}
+
+	.k-animation-container:has(.k-calendar-container.k-popup) .k-child-animation-container {
+		width: max-content !important;
+		height: max-content !important;
+	}
+
+	.k-animation-container:has(.k-calendar-container.k-popup) .k-popup {
+		border-radius: .25rem !important;
+		border: .1rem solid var(--border-subtle) !important;
+	}
+
+	.k-animation-container:has(.k-calendar-container.k-popup) .k-calendar-view {
+		padding: 0 !important;
+	}
+
+		.k-animation-container:has(.k-calendar-container.k-popup) .k-calendar-view .k-calendar-table {
+			margin: 0 !important;
+			width: 100% !important;
+		}
+
+	.k-animation-container:has(.k-calendar-container.k-popup) .k-calendar .k-calendar-header {
+		height: 3.5rem !important;
+		background-color: var(--calendar-header-bg);
+		color: var(--calendar-header-text);
+		border-bottom: 1px solid var(--calendar-border);
+	}
+
+		.k-animation-container:has(.k-calendar-container.k-popup) .k-calendar .k-calendar-header .k-button-text {
+			font-weight: bold;
+		}
+
+	.k-animation-container:has(.k-calendar-container.k-popup) .k-calendar .k-link {
+		padding-block: 0 !important;
+		padding-inline: 0 !important;
+		border-radius: 0.25rem !important;
+	}
+
+	.k-animation-container:has(.k-calendar-container.k-popup) .k-calendar .k-selected.k-focus .k-link {
+	}
+
+/*#endregion */
+
+/*#region Kendo Calendar Month Selector */
+
+.date-selector {
+}
+
+	.date-selector.date-selector-anchor-end .k-animation-container {
+		left: unset !important;
+		right: 0 !important;
+	}
+
+	.date-selector .k-calendar .k-calendar-td {
+		border: none !important;
+		padding-block: 0 !important;
+		padding-inline: 0 !important;
+		border-radius: 0.25rem !important;
+	}
+
+/*#endregion */
+
+/*#region Kendo Calendar Month Selector */
+
+.month-selector {
+}
+
+	.month-selector.month-selector-anchor-end .k-animation-container {
+		left: unset !important;
+		right: 0 !important;
+	}
+
+	.month-selector .k-animation-container:has(.k-calendar-container.k-popup) .k-child-animation-container {
+		height: calc(5rem * 3) !important;
+	}
+
+	.month-selector .k-animation-container:has(.k-calendar-container.k-popup) .k-popup {
+		height: 100% !important;
+	}
+
+	.month-selector .k-calendar-header {
+		display: none;
+		visibility: collapse;
+	}
+
+	.month-selector .k-calendar-yearview .k-calendar-td {
+		width: 5rem !important;
+		height: 5rem !important;
+	}
+
+/*#endregion */
+
+/*#region Kendo Calendar Year Selector */
+
+.year-selector {
+}
+
+	.year-selector .k-animation-container:has(.k-calendar-container.k-popup) .k-child-animation-container {
+		height: calc(calc(5rem * 3) + 3.5rem) !important;
+	}
+
+	.year-selector .k-animation-container:has(.k-calendar-container.k-popup) .k-popup {
+		height: 100% !important;
+	}
+
+	.year-selector .k-calendar-yearview .k-calendar-td {
+		width: 5rem !important;
+		height: 5rem !important;
+	}
+
+/*#endregion */

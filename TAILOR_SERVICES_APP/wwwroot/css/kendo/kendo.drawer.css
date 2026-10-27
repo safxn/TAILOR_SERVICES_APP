@@ -1,0 +1,268 @@
+/*#region Kendo Drawer */
+
+.drawer-container {
+	background-color: var(--drawer-bg-color);
+}
+
+	.drawer-container .system-drawer-wrapper {
+		position: sticky;
+		top: 0;
+	}
+
+	.drawer-container .drawer-wrapper {
+		overflow-y: auto;
+		overflow-x: hidden;
+	}
+
+	.drawer-container .drawer-item {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		padding-block: 0.375rem;
+		padding-inline: 0.75rem;
+		font-size: 1rem;
+		color: var(--drawer-text);
+		cursor: pointer;
+		transition: background-color 0.2s ease;
+	}
+
+		.drawer-container .drawer-item:hover {
+			background-color: var(--drawer-hover-bg);
+		}
+
+		.drawer-container .drawer-item > i:first-child {
+			display: flex;
+			align-items: center;
+			width: 1.25rem;
+			flex-shrink: 0;
+			font-size: 1.175rem;
+		}
+
+		.drawer-container .drawer-item > .drawer-text {
+			flex-grow: 1;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+
+			.drawer-container .drawer-item > .drawer-text > span {
+				display: inline-block;
+			}
+
+		.drawer-container .drawer-item .drawer-chevron {
+			margin-left: auto;
+			transition: transform 0.3s ease;
+			flex-shrink: 0;
+			font-size: 1.3275rem;
+			line-height: 0;
+		}
+
+		.drawer-container .drawer-item.expanded .drawer-chevron {
+			transform: rotate(180deg);
+		}
+
+		.drawer-container .drawer-item.active {
+			background-color: var(--drawer-active-bg);
+			color: var(--drawer-active-text);
+		}
+
+	.drawer-container .drawer-group {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.drawer-container .drawer-children {
+		display: none;
+		flex-direction: column;
+		overflow: hidden;
+		position: relative;
+	}
+
+		.drawer-container .drawer-children.show {
+			display: flex;
+		}
+
+	.drawer-container .drawer-group[data-level="1"] > .drawer-children {
+		padding-left: 1rem;
+	}
+
+	.drawer-container .drawer-group[data-level="2"] > .drawer-children {
+		padding-left: 1rem;
+	}
+
+	.drawer-container .drawer-group[data-level="3"] > .drawer-children {
+		padding-left: 1rem;
+	}
+
+	.drawer-container .drawer-children::before {
+		content: "";
+		position: absolute;
+		left: 1rem;
+		top: 0;
+		bottom: 0;
+		width: 1px;
+		background-color: var(--drawer-line);
+	}
+
+	.drawer-container .button-chevron {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+		.drawer-container .button-chevron span {
+			font-size: 1.5rem;
+			padding-block: .75rem;
+			padding-inline: .75rem;
+			line-height: 1.25rem;
+			display: flex;
+			align-items: center;
+		}
+
+	.drawer-container:has(.k-drawer-container:not(.k-drawer-expanded)) .drawer-item .drawer-text:not(.drawer-chevron) {
+		display: none;
+	}
+
+	.drawer-container:has(.k-drawer-container:not(.k-drawer-expanded)) .drawer-chevron {
+		display: none;
+	}
+
+	.drawer-container:has(.k-drawer-container:not(.k-drawer-expanded)) .drawer-children {
+		display: none !important;
+	}
+
+	.drawer-container:has(.k-drawer-container:not(.k-drawer-expanded)) .drawer-item {
+		justify-content: center;
+		padding-inline: 0.5rem;
+	}
+
+	.drawer-container:has(.k-drawer-expanded) .button-chevron {
+		position: absolute;
+		right: 0;
+		z-index: 100;
+	}
+
+		.drawer-container:has(.k-drawer-expanded) .button-chevron span:before {
+			content: '\e579';
+			font-family: var(--font-family-regular-icon);
+		}
+
+	.drawer-container:has(.k-drawer-container:not(.k-drawer-expanded)) .button-chevron {
+		position: relative;
+		right: auto;
+	}
+
+		.drawer-container:has(.k-drawer-container:not(.k-drawer-expanded)) .button-chevron span:before {
+			content: '\ec09';
+			font-family: var(--font-family-regular-icon);
+		}
+
+.navigation-drawer.k-drawer {
+	background-color: transparent;
+	border: none;
+}
+
+	.navigation-drawer.k-drawer .k-drawer-item {
+		padding: 0;
+		display: flex;
+		gap: .75rem;
+		padding-block: .25rem;
+		padding-inline: .75rem;
+		font-size: 1.1275rem;
+		color: var(--drawer-text);
+		align-items: center;
+	}
+
+		.navigation-drawer.k-drawer .k-drawer-item:hover {
+			cursor: pointer;
+		}
+
+		.navigation-drawer.k-drawer .k-drawer-item span {
+			font-size: 1.0275rem;
+			font-family: var(--font-medium) !important;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			flex: 1;
+		}
+
+		.navigation-drawer.k-drawer .k-drawer-item i {
+			font-size: var(--fs);
+			display: flex;
+			align-items: center;
+		}
+
+.k-drawer-mini .k-drawer-wrapper {
+	width: calc(2 * 1rem + 1rem);
+}
+
+.k-drawer .k-loading-mask {
+	z-index: 9999;
+}
+
+	.k-drawer .k-loading-mask .k-loading-color {
+		background-color: var(--drawer-bg);
+		opacity: 0.8;
+	}
+
+/*#region Kendo Drawer (Form Drawer) */
+
+/* Base Drawer Manager */
+
+.k-drawer.drawer-manager {
+	max-width: 100% !important;
+	background-color: transparent;
+}
+
+	/* Wrapper Base Styles (Combined) */
+
+	.k-drawer-container:has(> .drawer-manager) .k-drawer-wrapper,
+	.k-drawer.drawer-manager .k-drawer-wrapper {
+		margin: 0.75rem;
+		height: 100%;
+		box-shadow: var(--modal-shadow);
+		background-color: var(--surface);
+		color: var(--text);
+		border-radius: .875rem;
+		overflow: hidden !important;
+		transition: flex-basis 0.075s ease-out, width 0.075s ease-out !important;
+	}
+
+		.k-drawer-container:has(> .drawer-manager) .k-drawer-wrapper .k-drawer-items {
+			height: 100%;
+		}
+
+.k-drawer-container:has(> .drawer-manager) .k-overlay {
+	opacity: 0.4 !important;
+}
+
+/* Shell & Loading Mask */
+
+.k-drawer.drawer-manager .drawer-shell {
+	position: relative;
+	overflow-y: auto;
+}
+
+	.k-drawer.drawer-manager .drawer-shell > .k-loading-image {
+		display: none;
+	}
+
+	.k-drawer.drawer-manager .drawer-shell .k-loading-mask {
+		position: absolute;
+		z-index: 99999;
+	}
+
+/* Expanded State Overrides */
+
+body:has(.k-drawer-container.k-drawer-expanded > .drawer-manager) {
+	overflow: hidden;
+}
+
+.k-drawer-container.k-drawer-expanded:has(> .drawer-manager) .k-drawer-wrapper {
+	width: 0 !important;
+	transition: flex-basis 0.15s ease-out, width 0.15s ease-out !important;
+}
+
+/*#endregion */
+
+/*#endregion */

@@ -1,0 +1,78 @@
+/*#region Form drawer (<app-drawer>) */
+
+.drawer-form {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	background: var(--surface);
+}
+
+	.drawer-form > .drawer-head {
+		position: sticky;
+		top: 0;
+		z-index: 20;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: .75rem;
+		padding: 1.1rem 1.4rem;
+		background: var(--surface);
+		border-bottom: .0625rem solid var(--ds-line);
+	}
+
+		.drawer-form > .drawer-head h2 {
+			margin: 0;
+			font-size: 1.275rem;
+			letter-spacing: -.02rem;
+			font-weight: var(--font-weight-bold);
+			color: var(--ds-ink);
+		}
+
+	.drawer-form > .drawer-body {
+		flex: 1;
+		padding: 1.25rem 1.4rem;
+	}
+
+	.drawer-form > .sticky-foot {
+		position: sticky;
+		bottom: 0;
+		z-index: 20;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-end;
+		gap: .5rem;
+		padding: .9rem 1.4rem;
+		background: var(--ds-soft);
+		border-top: .0625rem solid var(--ds-line);
+	}
+
+.sticky-foot.position-sticky,
+.sticky-foot.position-static {
+	z-index: 20;
+	margin-top: 1rem;
+	padding: .9rem 1.4rem;
+	background: var(--surface);
+	border: .0625rem solid var(--ds-line);
+	border-radius: 1rem;
+	box-shadow: 0 .25rem 1rem rgba(0, 0, 0, 0.08);
+}
+
+.btn.ghost {
+	display: grid;
+	place-items: center;
+	width: 2.25rem;
+	height: 2.25rem;
+	padding: 0;
+	border: .0625rem solid var(--ds-line);
+	border-radius: var(--ds-radius-control);
+	background: var(--surface);
+	color: var(--ds-muted);
+}
+
+	.btn.ghost:hover {
+		color: var(--danger);
+		background: color-mix(in srgb, var(--danger) 8%, var(--surface));
+	}
+
+/*#endregion */
+

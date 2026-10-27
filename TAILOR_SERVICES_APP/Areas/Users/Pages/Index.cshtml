@@ -1,4 +1,4 @@
-﻿@page "/Users"
+﻿@page "/users"
 
 @model IndexModel
 
@@ -30,9 +30,9 @@
 						</column-template>
 						<filterable enabled="false"></filterable>
 					</column>
-					<column field="workUnit" title="WorkUnit" width="150" />
-					<column field="code" title="Code" width="150" />
-					<column field="name" title="Name" />
+					<column field="fullName" title="Name" width="150" />
+					<column field="email" title="Email" width="150" />
+					<column field="phoneNumber" title="Phone Number" />
 					<column title="@GridMessage.Edit.GetDisplayName()" field="id" width="70"
 							header-html-attributes='new Dictionary<string, object> { ["class"] = "text-center justify-content-center" }'
 							html-attributes='new Dictionary<string, object> { ["class"] = "text-center justify-content-center" }'>

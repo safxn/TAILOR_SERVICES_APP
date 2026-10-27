@@ -1,0 +1,66 @@
+/*#region List toolbar */
+
+.list-toolbar {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-end;
+	gap: .625rem;
+	padding: 0 1.3rem 1rem;
+}
+
+	.list-toolbar .form-group {
+		min-width: 10.5rem;
+		margin: 0;
+		padding: 0;
+	}
+
+	.list-toolbar > .k-button:last-child,
+	.list-toolbar > .ms-auto {
+		margin-inline-start: auto;
+	}
+
+.list-search {
+	position: relative;
+	flex: 1 1 15rem;
+	min-width: 13rem;
+}
+
+	.list-search > .fi-rr-search {
+		position: absolute;
+		inset-inline-start: .75rem;
+		bottom: .7rem;
+		z-index: 2;
+		font-size: .8rem;
+		color: var(--ds-muted);
+		pointer-events: none;
+	}
+
+	.list-search .k-input,
+	.list-search .form-control {
+		width: 100%;
+	}
+
+		.list-search.form-group > .k-input > .k-input-inner {
+			padding-inline-start: 2rem !important;
+		}
+
+.list-grid > .k-grid,
+.list-grid > .k-tabstrip .k-grid,
+.list-card > .k-grid {
+	border: 0 !important;
+	border-radius: 0;
+	box-shadow: none !important;
+}
+
+.list-grid > .k-tabstrip > .k-tabstrip-items-wrapper {
+	padding: 0 1.3rem .75rem;
+}
+
+.list-grid > .k-tabstrip > .k-tabstrip-content {
+	padding: 0;
+	border: 0;
+	background: transparent;
+}
+
+/*#endregion */
+

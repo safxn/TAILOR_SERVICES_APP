@@ -1,0 +1,29 @@
+/*#region Badge Styles */
+
+.k-badge {
+    font-size: 1.125rem;
+    padding: 0.425rem 0.725rem;
+    display: flex;
+    gap: 0.425rem;
+    align-items: center;
+    border-radius: 0;
+    border: none;
+    line-height: 1.5;
+}
+
+    .k-badge.request-pending::before {
+        content: '\eb8b';
+        font-family: var(--font-family-icon) !important;
+    }
+
+    .k-badge.request-approved::before {
+        content: '\f2f7';
+        font-family: var(--font-family-icon) !important;
+    }
+
+    .k-badge.request-rejected::before {
+        content: '\e24c';
+        font-family: var(--font-family-icon) !important;
+    }
+
+/*#endregion */

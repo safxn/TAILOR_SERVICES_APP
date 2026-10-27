@@ -1,0 +1,3 @@
+.hover-primary:hover {
+    color: var(--text-primary) !important;
+}

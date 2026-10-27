@@ -1,0 +1,86 @@
+/*#region Kendo Dropdown List */
+
+.k-dropdownlist {
+	display: flex;
+	font-size: 1rem;
+	box-shadow: none !important;
+	padding: 0;
+	background-color: transparent !important;
+	background-image: none !important;
+	display: flex !important;
+	gap: 0.5rem;
+}
+
+	.k-dropdownlist.k-state-border-down {
+		border-bottom-left-radius: 0 !important;
+		border-bottom-right-radius: 0 !important;
+	}
+
+	.k-dropdownlist[aria-readonly=true] {
+		cursor: default;
+	}
+
+		.k-dropdownlist[aria-readonly=true] .k-button,
+		.k-dropdownlist[aria-disabled=true] .k-button {
+			display: none;
+		}
+
+	.k-dropdownlist.k-focus,
+	.k-dropdownlist:focus {
+		box-shadow: var(--input-shadow-focus);
+		border: 1px solid var(--input-border-focus) !important;
+	}
+
+	.k-dropdownlist .k-input-inner {
+		padding: 0 .2rem;
+	}
+
+	.k-dropdownlist .k-button {
+		box-shadow: none !important;
+		padding: 0 !important;
+		padding-right: 0;
+	}
+
+		.k-dropdownlist .k-button:hover {
+			color: inherit !important;
+		}
+
+			.k-dropdownlist .k-button:hover::before {
+				opacity: 0;
+			}
+
+/*#endregion */
+
+/*#region Kendo Dropdown List Popup Custom Width */
+
+.dropdown-popup-xs .k-popup {
+	width: 20vw !important;
+}
+
+.dropdown-popup-sm .k-popup {
+	width: 40vw !important;
+}
+
+.dropdown-popup-md .k-popup {
+	width: 60vw !important;
+}
+
+.dropdown-popup-lg .k-popup {
+	width: 80vw !important;
+}
+
+.dropdown-popup-xl .k-popup {
+	width: 100vw !important;
+}
+
+.dropdown-popup-anchor-end .k-animation-container {
+	left: unset !important;
+	right: 0 !important;
+}
+
+.dropdown-popup-anchor-unset .k-animation-container {
+	left: unset !important;
+	right: unset !important;
+}
+
+/*#endregion*/
