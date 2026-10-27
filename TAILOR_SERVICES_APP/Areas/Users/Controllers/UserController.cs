@@ -31,6 +31,14 @@ namespace TAILOR_SERVICES_APP.Areas.Users.Controllers
                 return new DataSourceResult();
             }
         }
+
+        [HttpGet("list")]
+        public async Task<IActionResult> List(CancellationToken ct)
+        {
+            var request = new DataSourceRequest { Page = 1, PageSize = 1000 };
+            var result = await _repository.GetGridAsync(request, ct);
+            return Ok(result.Data);
+        }
     }
 }
     
