@@ -9,6 +9,13 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="~/css/bootstrap/styles/bootstrap.min.css" />
 
+    <!-- 2. Theme tokens (MUST load before kendo.css) -->
+    <link rel="stylesheet" href="~/css/theme/theme.base.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/theme/theme.base.min.css" asp-append-version="true" />
+
+    <!-- 3. Icon/Fonts -->
+    <link rel="stylesheet" href="~/css/icons.css" asp-append-version="true" />
+
     <!-- Kendo UI CSS (IMPORTANT) -->
     <link rel="stylesheet" href="~/css/kendo/kendo.css"/>
 
@@ -41,7 +48,7 @@
         </nav>
     </header>
 
-    <div class="container">
+    <div class="container-fluid px-4">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
