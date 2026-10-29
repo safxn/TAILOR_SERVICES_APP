@@ -11,7 +11,7 @@ public sealed record UserGridDto
 
     public string? PhoneNumber { get; init; }
 }
-public sealed record UserDetailDto
+public sealed class UserDetailDto : InputVersionField
 {
     public required string Id { get; init; }
 
@@ -20,6 +20,7 @@ public sealed record UserDetailDto
     public required string Email { get; init; } 
 
     public string? PhoneNumber { get; init; }
+
 }
 
 public sealed record UserCreateDto
@@ -43,5 +44,5 @@ public sealed record UserUpdateDto
 
     public  string? PhoneNumber { get; set; }
 
-    public string? NewPassword { get; set; }  
+    public string? Password { get; set; }  
 }
