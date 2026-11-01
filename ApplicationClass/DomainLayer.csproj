@@ -8,7 +8,6 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="8.0.10" />
-		<PackageReference Include="Telerik.UI.for.AspNet.Core" Version="2023.3.1114" />
 	</ItemGroup>
 
 	<ItemGroup>

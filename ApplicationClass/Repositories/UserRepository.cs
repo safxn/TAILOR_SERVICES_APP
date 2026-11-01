@@ -4,8 +4,7 @@ using DomainLayer.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using Kendo.Mvc.Extensions;
-using Kendo.Mvc.UI;
+
 
 namespace DomainLayer;
 

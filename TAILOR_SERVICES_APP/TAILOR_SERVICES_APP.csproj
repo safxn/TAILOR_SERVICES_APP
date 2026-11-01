@@ -23,6 +23,7 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 
+		<PackageReference Include="Microsoft.CodeAnalysis.Common" Version="4.5.0" />
 		<PackageReference Include="Microsoft.CodeAnalysis.VisualBasic" Version="4.5.0" />
 		<PackageReference Include="Microsoft.CodeAnalysis.VisualBasic.Workspaces" Version="4.5.0" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.30" />
@@ -30,8 +31,6 @@
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		  <PrivateAssets>all</PrivateAssets>
 		</PackageReference>
-
-		<PackageReference Include="Telerik.UI.for.AspNet.Core" Version="2023.3.1114" />
 	</ItemGroup>
 
 	<ItemGroup>

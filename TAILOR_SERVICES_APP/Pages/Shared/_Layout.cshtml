@@ -1,5 +1,4 @@
-﻿@using Kendo.Mvc.UI
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -9,15 +8,14 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="~/css/bootstrap/styles/bootstrap.min.css" />
 
-    <!-- 2. Theme tokens (MUST load before kendo.css) -->
-    <link rel="stylesheet" href="~/css/theme/theme.base.css" asp-append-version="true" />
+    <!-- Theme tokens (only one of these two, not both) -->
     <link rel="stylesheet" href="~/css/theme/theme.base.min.css" asp-append-version="true" />
 
-    <!-- 3. Icon/Fonts -->
+    <!-- Icons/Fonts -->
     <link rel="stylesheet" href="~/css/icons.css" asp-append-version="true" />
 
-    <!-- Kendo UI CSS (IMPORTANT) -->
-    <link rel="stylesheet" href="~/css/kendo/kendo.css"/>
+    <!-- Kendo UI Core CSS -->
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/themes/13.0.0/default/default-ocean-blue.css" />
 
     <!-- Site CSS -->
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
@@ -61,25 +59,20 @@
         </div>
     </footer>
 
-    <!-- ✅ Scripts Order is VERY IMPORTANT -->
-    <!-- jQuery (FIRST) -->
+    <!-- Scripts: order matters -->
+    <!-- 1. jQuery -->
     <script src="~/lib/jquery/3.7.1/jquery.min.js"></script>
 
-    <!-- Bootstrap -->
+    <!-- 2. Bootstrap -->
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Kendo UI -->
-    <script src="~/lib/kendo/2023.3.1114/kendo.all.min.js"></script>
-    <script src="~/lib/kendo/2023.3.1114/kendo.aspnetmvc.min.js"></script>
+    <!-- 3. Kendo UI Core (after jQuery) -->
+    <script src="https://kendo.cdn.telerik.com/2026.1.212/js/kendo.ui.core.min.js"></script>
 
-    <!-- Site JS -->
+    <!-- 4. Site JS -->
     <script src="~/js/site.js" asp-append-version="true"></script>
 
-    <!-- Kendo Deferred Scripts -->
-    @Html.Kendo().DeferredScripts(true)
-
-    <!-- Page-specific scripts -->
+    <!-- 5. Page-specific scripts -->
     @await RenderSectionAsync("Scripts", required: false)
-
 </body>
 </html>
