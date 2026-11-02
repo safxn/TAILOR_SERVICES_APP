@@ -1,70 +1,44 @@
-﻿@page "/users"
+﻿@page
+@{
+    ViewData["Title"] = "Users";
+}
 
-@model IndexModel
-
-<app-stack>
-	<app-page-header overline="Settings" title="Users" description="Manage users and their permissions.">
-		<a class="k-button k-button-primary" href="/users/new">
-			<i class="fi fi-rr-plus"></i>
-			Add New User
-		</a>
-	</app-page-header>
-
-	<app-grid-container title="User Management" icon="fi-rr-users-alt">
-		<app-list-grid>
-			<kendo-grid name="grid" on-data-bound="gridDataBound" loader-type="GridLoaderType.Skeleton" auto-bind="false" deferred="true">
-				<datasource type="DataSourceTagHelperType.WebApi" page="0" page-size="@GridConfig.PageSize" server-operation="true">
-					<schema data="data" total="total">
-						<model id="id"></model>
-					</schema>
-					<transport>
-						<read url="/api/users" /> 
-					</transport>
-				</datasource>
-				<columns>
-					<column title="@GridMessage.RowNumber.GetDisplayName()" width="50"
-							header-html-attributes='new Dictionary<string, object> { ["class"] = "text-center justify-content-center" }'
-							html-attributes='new Dictionary<string, object> { ["class"] = "text-center justify-content-center" }'>
-						<column-template>
-							<span class="row-number"></span>
-						</column-template>
-						<filterable enabled="false"></filterable>
-					</column>
-					<column field="fullName" title="Name" width="150" />
-					<column field="email" title="Email" width="150" />
-					<column field="phoneNumber" title="Phone Number" />
-					<column title="@GridMessage.Edit.GetDisplayName()" field="id" width="70"
-							header-html-attributes='new Dictionary<string, object> { ["class"] = "text-center justify-content-center" }'
-							html-attributes='new Dictionary<string, object> { ["class"] = "text-center justify-content-center" }'>
-						<column-template>
-							<a class="fi fi-tr-file-edit fs-s d-flex justify-content-center" href='/users/edit/${data.id}'></a>
-						</column-template>
-						<filterable enabled="false"></filterable>
-					</column>
-				</columns>
-				<pageable enabled="true" button-count="@GridConfig.ButtonCount">
-					<messages display="@GridMessage.DisplayMessage.GetDisplayName()" empty="@GridMessage.EmptyMessage.GetDisplayName()" first="@GridMessage.FirstMessage.GetDisplayName()" previous="@GridMessage.PreviousMessage.GetDisplayName()" next="@GridMessage.NextMessage.GetDisplayName()" last="@GridMessage.LastMessage.GetDisplayName()" items-per-page="@GridMessage.ItemsPerPageMessage.GetDisplayName()" />
-				</pageable>
-				<sortable enabled="false" />
-				<scrollable enabled="false" />
-				<filterable enabled="false" />
-			</kendo-grid>
-		</app-list-grid>
-	</app-grid-container>
-</app-stack>
+<h2>Users</h2>
+<table id="usersTable" class="table table-striped table-hover w-100"></table>
 
 @section Scripts {
-	<script type="text/javascript">
-		$(function () {
-			$("#grid").getKendoGrid().dataSource.read();
-		});
+    <script>
+        const esc = s => String(s ?? "").replace(/[&<>"']/g,
+            c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
-		function gridDataBound(e) {
-			const { dataSource } = this;
-			const baseIndex = ((dataSource.page() - 1) * (dataSource.pageSize() || 0));
-			this.items().each((index, row) => {
-				row.querySelector('.row-number').textContent = baseIndex + index + 1;
-			});
-		}
-	</script>
+        $("#usersTable").DataTable({
+            processing: true,
+            serverSide: true,
+            searchDelay: 400,         
+            pageLength: 10,
+            lengthMenu: [10, 25, 50, 100],
+            order: [[0, "asc"]],
+            ajax: {
+                url: "/api/users/datatable",
+                type: "POST",
+                contentType: "application/json",
+                data: d => JSON.stringify(d)
+            },
+            columns: [
+                { data: "fullName", title: "Full name", render: DataTable.render.text() },
+                { data: "email", title: "Email", render: DataTable.render.text() },
+                { data: "phoneNumber", title: "Phone", render: DataTable.render.text(), defaultContent: "" },
+                {
+                    data: "id", title: "Actions", orderable: false, searchable: false,
+                    render: id => `<button class="btn btn-sm btn-primary btn-edit" data-id="${esc(id)}">Edit</button>
+                                       <button class="btn btn-sm btn-danger btn-delete" data-id="${esc(id)}">Delete</button>`
+                }
+            ]
+        });
+
+        $("#usersTable").on("click", ".btn-edit", function () {
+            const id = $(this).data("id");
+            // open your Kendo Window / edit page here
+        });
+    </script>
 }
