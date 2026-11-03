@@ -1,33 +1,58 @@
 ﻿@page "/users/new"
+@model NewModel
+@{
+    ViewData["Title"] = "New User";
+}
 
-@Model TAILOR_SERVICES_APP.Areas.Users.Pages.NewModel
+<div class="page-header d-print-none mb-3">
+    <h2 class="page-title">New User</h2>
+</div>
 
-<app-stack>
-    <form>
-        <div class="row">
-			<div class="col-sm-3">
-				<app-card title="Group" icon="fi-rr-users">
-					<app-form-section>
-						<app-field col="col-sm-12">
-							<label asp-for="Input.Code" class="form-label required"></label>
-							<kendo-textbox for="Input.Code" class="form-control" deferred="true" />
-							<span asp-validation-for="Input.Code" class="text-danger"></span>
-						</app-field>
+<form method="post" novalidate>
+    <div class="row">
+        <div class="col-md-6 col-lg-5">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">User</h3>
+                </div>
 
-						<app-field col="col-sm-12">
-							<label asp-for="Input.Name" class="form-label required"></label>
-							<kendo-textbox for="Input.Name" class="form-control" deferred="true" />
-							<span asp-validation-for="Input.Name" class="text-danger"></span>
-						</app-field>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label asp-for="Input.FullName" class="form-label required"></label>
+                        <input asp-for="Input.FullName" class="form-control" placeholder="Enter full name" />
+                        <span asp-validation-for="Input.FullName" class="text-danger small"></span>
+                    </div>
 
-						<app-field col="col-sm-12" class="h-100">
-							<label asp-for="Input.Description" class="form-label"></label>
-							<kendo-textarea for="Input.Description" class="form-control" style="height: 100%; min-height: 10rem;" deferred="true">
-							</kendo-textarea>
-						</app-field>
-					</app-form-section>
-				</app-card>
-			</div>
+                    <div class="mb-3">
+                        <label asp-for="Input.Email" class="form-label required"></label>
+                        <input asp-for="Input.Email" type="email" class="form-control" placeholder="name@example.com" />
+                        <span asp-validation-for="Input.Email" class="text-danger small"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Input.Password" class="form-label required"></label>
+                        <input asp-for="Input.Password" type="password" class="form-control"
+                               placeholder="Enter password" autocomplete="new-password" />
+                        <span asp-validation-for="Input.Password" class="text-danger small"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Input.PhoneNumber" class="form-label"></label>
+                        <input asp-for="Input.PhoneNumber" type="tel" class="form-control" placeholder="+968 9xxx xxxx" />
+                        <span asp-validation-for="Input.PhoneNumber" class="text-danger small"></span>
+                    </div>
+                </div>
+
+                <div class="card-footer text-end">
+                    <a href="/users" class="btn btn-link">Cancel</a>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
         </div>
-    </form>
-</app-stack>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+}
