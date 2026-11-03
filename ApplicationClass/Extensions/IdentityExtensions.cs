@@ -12,9 +12,13 @@ internal static class IdentityExtensions
         services.AddIdentity<ApplicationUser, IdentityRole>(o =>
         {
             o.Password.RequiredLength = 8;
-            o.User.RequireUniqueEmail = true;
+            o.Password.RequireUppercase = true;
+            o.Password.RequireLowercase = true;
+            o.Password.RequireDigit = true;
+            o.Password.RequireNonAlphanumeric = false;
         })
             .AddEntityFrameworkStores<AppDbContext>()
+            .AddErrorDescriber<AppIdentityErrorDescriber>()   
             .AddDefaultTokenProviders();
 
         return services;
