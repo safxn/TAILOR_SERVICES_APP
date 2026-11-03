@@ -45,9 +45,9 @@ internal sealed class UserRepository(
             {
                 UserName = dto.Email,
                 Email = dto.Email,
-                EmailConfirmed = true,
                 FullName = dto.FullName,
-                PhoneNumber = dto.PhoneNumber
+                PhoneNumber = dto.PhoneNumber,
+                EmailConfirmed = true
             };
 
             var result = await _userManager.CreateAsync(user, dto.Password);

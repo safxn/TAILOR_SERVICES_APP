@@ -4,27 +4,33 @@ using DomainLayer.Dtos.Users;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
+using System.ComponentModel.DataAnnotations;
 
 namespace TAILOR_SERVICES_APP.Areas.Users.Pages
 {
-    internal sealed class NewModel(ILogger<NewModel> logger,
+    public sealed class NewModel(ILogger<NewModel> logger,      // CHANGED: internal -> public
       IUserRepository repository) : PageModel
     {
         private readonly ILogger<NewModel> _logger = logger;
         private readonly IUserRepository _repository = repository;
 
+        [BindProperty]                                          // CHANGED: added
         public InputModel Input { get; set; } = null!;
 
-        internal sealed class InputModel : InputVersionField
+        public sealed class InputModel : InputVersionField      // CHANGED: internal -> public
         {
             public string? Id { get; set; }
 
+            [Display(Name = "Name"), StringLength(4096)]
             public string? FullName { get; set; }
 
+            [Display(Name = "Email")]
             public string? Email { get; set; }
 
+            [Display(Name = "Password")]
             public string? Password { get; set; }
 
+            [Display(Name = "Phone Number")]
             public string? PhoneNumber { get; set; }
         }
 
@@ -35,7 +41,7 @@ namespace TAILOR_SERVICES_APP.Areas.Users.Pages
                 if (!string.IsNullOrWhiteSpace(id))
                 {
                     var getStatus = await _repository.GetByIdAsync(id, cancellationToken);
-                    if (getStatus.Succeeded)
+                    if (!getStatus.Succeeded)                   // CHANGED: was "if (getStatus.Succeeded)"
                         return Redirect("/users");
 
                     var result = getStatus.Value;
@@ -44,6 +50,7 @@ namespace TAILOR_SERVICES_APP.Areas.Users.Pages
                         Id = id,
                         FullName = result.FullName,
                         Email = result.Email,
+                        PhoneNumber = result.PhoneNumber,       // CHANGED: added so edit shows the phone
                         ConcurrencyToken = result.ConcurrencyToken
                     };
                 }
@@ -88,7 +95,7 @@ namespace TAILOR_SERVICES_APP.Areas.Users.Pages
                         FullName = Input.FullName!,
                         Email = Input.Email!,
                         PhoneNumber = Input.PhoneNumber!,
-                        Password = Input.Password,
+                        NewPassword = Input.Password,           // CHANGED: was "Password", the repository reads NewPassword
                     };
                     return new JsonResult(await _repository.UpdateAsync(dataObject, cancellationToken));
                 }
@@ -101,7 +108,7 @@ namespace TAILOR_SERVICES_APP.Areas.Users.Pages
                 System.Diagnostics.Debug.WriteLine(ex.Message);
 #endif
                 _logger.Error(ex);
-                return new JsonResult(OperationResult.Fail(SystemMessage.ServerError));   
+                return new JsonResult(OperationResult.Fail(SystemMessage.ServerError));
             }
         }
     }

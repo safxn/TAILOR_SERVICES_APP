@@ -1,5 +1,8 @@
 ﻿@page "/users/new"
+
+
 @model NewModel
+
 @{
     ViewData["Title"] = "New User";
 }
@@ -9,6 +12,8 @@
 </div>
 
 <form method="post" novalidate>
+    <input type="hidden" asp-for="Input.Id" />
+    <input type="hidden" asp-for="Input.ConcurrencyToken" />
     <div class="row">
         <div class="col-md-6 col-lg-5">
             <div class="card">
@@ -55,4 +60,29 @@
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 
+   <script type="text/javascript">
+
+      $("form").on("submit", async function (e) {
+            e.preventDefault();
+            const form = this;
+            if (!$(form).valid()) return;
+
+            const btn = $(form).find("button[type=submit]").prop("disabled", true);
+            try {
+                const res = await fetch(location.href, { method: "POST", body: new FormData(form) });
+                const result = await res.json();
+
+                if (result.succeeded) {
+                    location.href = "/users";
+                } else {
+                    const msgs = [].concat(result.errors ?? result.messages ?? "Something went wrong.");
+                    alert(msgs.join("\n"));
+                }
+            } catch {
+                alert("Server error. Please try again.");
+            } finally {
+                btn.prop("disabled", false);
+            }
+        });
+   </script>
 }
