@@ -8,16 +8,16 @@ using System.ComponentModel.DataAnnotations;
 
 namespace TAILOR_SERVICES_APP.Areas.Users.Pages
 {
-    public sealed class NewModel(ILogger<NewModel> logger,      // CHANGED: internal -> public
+    public sealed class NewModel(ILogger<NewModel> logger,     
       IUserRepository repository) : PageModel
     {
         private readonly ILogger<NewModel> _logger = logger;
         private readonly IUserRepository _repository = repository;
 
-        [BindProperty]                                          // CHANGED: added
+        [BindProperty]                                          
         public InputModel Input { get; set; } = null!;
 
-        public sealed class InputModel : InputVersionField      // CHANGED: internal -> public
+        public sealed class InputModel : InputVersionField      
         {
             public string? Id { get; set; }
 
@@ -41,7 +41,7 @@ namespace TAILOR_SERVICES_APP.Areas.Users.Pages
                 if (!string.IsNullOrWhiteSpace(id))
                 {
                     var getStatus = await _repository.GetByIdAsync(id, cancellationToken);
-                    if (!getStatus.Succeeded)                   // CHANGED: was "if (getStatus.Succeeded)"
+                    if (!getStatus.Succeeded)                   
                         return Redirect("/users");
 
                     var result = getStatus.Value;
@@ -50,7 +50,7 @@ namespace TAILOR_SERVICES_APP.Areas.Users.Pages
                         Id = id,
                         FullName = result.FullName,
                         Email = result.Email,
-                        PhoneNumber = result.PhoneNumber,       // CHANGED: added so edit shows the phone
+                        PhoneNumber = result.PhoneNumber,     
                         ConcurrencyToken = result.ConcurrencyToken
                     };
                 }
@@ -95,7 +95,7 @@ namespace TAILOR_SERVICES_APP.Areas.Users.Pages
                         FullName = Input.FullName!,
                         Email = Input.Email!,
                         PhoneNumber = Input.PhoneNumber!,
-                        NewPassword = Input.Password,           // CHANGED: was "Password", the repository reads NewPassword
+                        NewPassword = Input.Password,          
                     };
                     return new JsonResult(await _repository.UpdateAsync(dataObject, cancellationToken));
                 }
