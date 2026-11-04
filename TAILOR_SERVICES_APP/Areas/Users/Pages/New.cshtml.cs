@@ -38,9 +38,6 @@ namespace TAILOR_SERVICES_APP.Areas.Users.Pages
         {
             try
             {
-                if (Input is null)
-                    return new JsonResult(OperationResult.Fail("Invalid request."));
-
                 if (!string.IsNullOrWhiteSpace(id))
                 {
                     var getStatus = await _repository.GetByIdAsync(id, cancellationToken);

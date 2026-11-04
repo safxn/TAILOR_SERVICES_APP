@@ -33,7 +33,8 @@ internal sealed class UserRepository(
             Id = user.Id,
             FullName = user.FullName ?? "",
             Email = user.Email ?? "",
-            PhoneNumber = user.PhoneNumber
+            PhoneNumber = user.PhoneNumber,
+            ConcurrencyToken = EF.Property<byte[]>(user, nameof(InputVersionField.ConcurrencyToken))
         });
     }
 
