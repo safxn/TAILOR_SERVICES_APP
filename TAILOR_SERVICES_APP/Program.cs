@@ -1,6 +1,7 @@
+using DomainLayer.Extensions;
 using InfrastructureLayer.Seed;
 using Microsoft.AspNetCore.Authorization;
-using DomainLayer.Extensions;
+using System.Text.Json;
 using TAILOR_SERVICES_APP.Authorization;
 
 
@@ -13,10 +14,7 @@ builder.Services.AddRazorPages()
     });
 
 builder.Services.AddControllers()
-    .AddJsonOptions(options =>
-    {
-        options.JsonSerializerOptions.PropertyNamingPolicy = null;
-    });
+      .AddJsonOptions(o => o.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase);
 
 builder.Services.AddScoped<IAuthorizationHandler, PermissionAuthorizationHandler>();
 

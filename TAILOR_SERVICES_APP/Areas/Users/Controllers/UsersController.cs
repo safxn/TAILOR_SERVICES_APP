@@ -38,7 +38,7 @@ namespace TAILOR_SERVICES_APP.Areas.Users.Controllers
         }
 
         // Plain paged GET (optional): /api/users?page=1&pageSize=10
-        [HttpGet]
+        [HttpGet("data")]
         public async Task<DataSourceResult> Get([FromQuery] DataSourceRequest request, CancellationToken ct)
         {
             try

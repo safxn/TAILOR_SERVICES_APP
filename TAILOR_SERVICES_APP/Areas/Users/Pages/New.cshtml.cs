@@ -21,16 +21,16 @@ namespace TAILOR_SERVICES_APP.Areas.Users.Pages
         {
             public string? Id { get; set; }
 
-            [Display(Name = "Name"), StringLength(4096)]
+            [Display(Name = "Full name"), RequiredField]
             public string? FullName { get; set; }
 
-            [Display(Name = "Email")]
+            [Display(Name = "Email"), RequiredField, EmailField,]
             public string? Email { get; set; }
 
-            [Display(Name = "Password")]
+            [Display(Name = "Password"), DataType(DataType.Password), RequiredField, StrongPassword]
             public string? Password { get; set; }
 
-            [Display(Name = "Phone Number")]
+            [Display(Name = "Phone number"), PhoneField]
             public string? PhoneNumber { get; set; }
         }
 
