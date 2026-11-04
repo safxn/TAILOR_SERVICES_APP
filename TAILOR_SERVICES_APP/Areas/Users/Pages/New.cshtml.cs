@@ -24,7 +24,7 @@ namespace TAILOR_SERVICES_APP.Areas.Users.Pages
             [Display(Name = "Full name"), RequiredField]
             public string? FullName { get; set; }
 
-            [Display(Name = "Email"), RequiredField, EmailField,]
+            [Display(Name = "Email"), RequiredField, EmailField]
             public string? Email { get; set; }
 
             [Display(Name = "Password"), DataType(DataType.Password), RequiredField, StrongPassword]
@@ -34,10 +34,13 @@ namespace TAILOR_SERVICES_APP.Areas.Users.Pages
             public string? PhoneNumber { get; set; }
         }
 
-        public async Task<IActionResult> OnGetAsync(string id, CancellationToken cancellationToken)
+        public async Task<IActionResult> OnGetAsync(string? id, CancellationToken cancellationToken)
         {
             try
             {
+                if (Input is null)
+                    return new JsonResult(OperationResult.Fail("Invalid request."));
+
                 if (!string.IsNullOrWhiteSpace(id))
                 {
                     var getStatus = await _repository.GetByIdAsync(id, cancellationToken);
@@ -45,6 +48,8 @@ namespace TAILOR_SERVICES_APP.Areas.Users.Pages
                         return Redirect("/users");
 
                     var result = getStatus.Value;
+                    if (!getStatus.Succeeded || result is null)
+                        return Redirect("/users");
                     Input = new()
                     {
                         Id = id,
@@ -72,10 +77,13 @@ namespace TAILOR_SERVICES_APP.Areas.Users.Pages
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(string id, CancellationToken cancellationToken)
+        public async Task<IActionResult> OnPostAsync(string? id, CancellationToken cancellationToken)
         {
             try
             {
+                if (!ModelState.IsValid)
+                    return new JsonResult(ModelState.ToOperationResult());
+
                 if (string.IsNullOrWhiteSpace(id))
                 {
                     UserCreateDto dataObject = new()

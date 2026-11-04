@@ -24,9 +24,9 @@ public sealed class SortDescriptor
 
 public sealed class FilterDescriptor
 {
-    public string? Logic { get; set; }          // "and" / "or"
+    public string? Logic { get; set; }        
     public string? Field { get; set; }
-    public string? Operator { get; set; }       // eq, neq, lt, lte, gt, gte, contains, ...
+    public string? Operator { get; set; }       
     public object? Value { get; set; }
     public List<FilterDescriptor>? Filters { get; set; }
 }
