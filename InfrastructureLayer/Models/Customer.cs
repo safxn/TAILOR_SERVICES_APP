@@ -4,33 +4,46 @@ using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.Metrics;
 using System.Text;
 
-namespace DomainLayer.Models
-{
- 
-     public class Customer
-    {
-        public int Id { get; set; }
+namespace DomainLayer.Models;
+   public class Customer
+   {
+    public string Id { get; private init; } = Guid.NewGuid().ToString();
 
-        [Required, MaxLength(150)]
-        public string Name { get; set; } = string.Empty;
+    [Required, MaxLength(150)]
+        public string Name { get; private set; } = string.Empty;
 
         [MaxLength(20)]
-        public string? Phone { get; set; }
+        public string? Phone { get; private set; }
 
         [MaxLength(250)]
-        public string? Address { get; set; }
+        public string? Address { get; private set; }
 
-        public string? Notes { get; set; }
+        public string? Notes { get; private set; }
 
         // Who registered this customer (admin or employee)
-        public string CreatedById { get; set; } = string.Empty;
-        public ApplicationUser? CreatedBy { get; set; }
+        public string CreatedById { get; private set; } = string.Empty;
+        public ApplicationUser? CreatedBy { get; private set; }
 
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime CreatedAt { get; private set; } = DateTime.UtcNow;
 
         // Navigation
-        public ICollection<Measurement> Measurements { get; set; } = new List<Measurement>();
-        public ICollection<Order> Orders { get; set; } = new List<Order>();
-    }
-}
+        public ICollection<Measurement> Measurements { get; private set; } = new List<Measurement>();
+        public ICollection<Order> Orders { get; private set; } = new List<Order>();
+
+        #region Factory Method
+        public static Customer Create( string name, string phone, string address, string notes)
+        {
+            return new Customer()
+            {
+                Name = name,
+                Phone = phone,
+                Address = address,
+                Notes = notes
+            };
+        }
+
+        #endregion
+   }
+
+
 
