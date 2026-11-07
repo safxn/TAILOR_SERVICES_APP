@@ -8,7 +8,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Folder Include="Areas\Administration\Controllers\" />
+		<Folder Include="Areas\Administration\Controllers\" /> 
 		<Folder Include="Data\" />
 		<Folder Include="RegisterServices\" />
 	</ItemGroup>

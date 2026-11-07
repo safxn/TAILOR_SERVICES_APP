@@ -1,6 +1,8 @@
 using DomainLayer.Extensions;
 using InfrastructureLayer.Seed;
+using InfrastructureLayer.Services;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using System.Text.Json;
 using TAILOR_SERVICES_APP.Authorization;
 
@@ -27,6 +29,8 @@ builder.Services.AddAuthorization(options =>
         policy.Requirements.Add(new PermissionRequirement("ManageCustomers")));
 });
 builder.Services.AddDomainLayer(builder.Configuration);
+
+builder.Services.AddTransient<IEmailSender, SmtpEmailSender>();
 
 var app = builder.Build();
 
