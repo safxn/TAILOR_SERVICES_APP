@@ -31,19 +31,25 @@ namespace DomainLayer.Models;
         public ICollection<Order> Orders { get; private set; } = new List<Order>();
 
         #region Factory Method
-        public static Customer Create( string name, string phone, string address, string notes)
+        public static Customer Create( string name, string phone, string address, string notes, string createdById)
         {
             return new Customer()
             {
                 Name = name,
                 Phone = phone,
                 Address = address,
-                Notes = notes
+                Notes = notes,
+                CreatedById = createdById
             };
         }
 
-        #endregion
-   }
+    public void Update(string name, string? phone, string? address, string? notes)
+    {
+        Name = name; Phone = phone; Address = address; Notes = notes;
+    }
+
+    #endregion
+}
 
 
 

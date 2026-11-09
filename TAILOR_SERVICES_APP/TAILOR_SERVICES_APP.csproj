@@ -8,6 +8,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <None Remove="tailor-ui\src\app\shared\grid-request.ts" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<Folder Include="Areas\Administration\Controllers\" /> 
 		<Folder Include="Data\" />
 		<Folder Include="RegisterServices\" />
@@ -31,11 +35,19 @@
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		  <PrivateAssets>all</PrivateAssets>
 		</PackageReference>
+		<PackageReference Include="Microsoft.TypeScript.MSBuild" Version="7.0.1">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\ApplicationClass\DomainLayer.csproj" />
 		<ProjectReference Include="..\InfrastructureLayer\InfrastructureLayer.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <TypeScriptCompile Include="tailor-ui\src\app\shared\grid-request.ts" />
 	</ItemGroup>
 
 </Project>

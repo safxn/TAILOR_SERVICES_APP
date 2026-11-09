@@ -1,34 +1,27 @@
-﻿namespace InfrastructureLayer.Dtos
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace DomainLayer.Dtos
 {
-    public sealed class CustomerDto
+    public sealed class CustomerGridDto
+    { 
+        public string Id { get; set; } = default!;
+
+        public string Name { get; set; } = default!;
+
+        public string? Phone { get; set; } = default!;
+
+        public string? Address { get; set; } = default!;
+
+        public DateTime CreatedAt { get; set; } = default!;
+
+    } 
+    public sealed record CustomerDetailDto(string Id, string Name, string? Phone, string? Address, string? Notes);
+
+    public sealed class CustomerSaveDto
     {
-        public string FullName { get; set; } = string.Empty;
-
-        public string PhoneNumber { get; set; } = string.Empty;
-
-        public string? Email { get; set; }
-
-        public string? Address { get; set; }
-
-        public string? Gender { get; set; }
-
-        public DateTime? DateOfBirth { get; set; }
-
-        public decimal? Chest { get; set; }
-
-        public decimal? Waist { get; set; }
-
-        public decimal? Shoulder { get; set; }
-
-        public decimal? SleeveLength { get; set; }
-
-        public decimal? Neck { get; set; }
-
-        public decimal? Inseam { get; set; }
-
-        public string? FabricPreference { get; set; }
-
+        [Required, MaxLength(150)] public string Name { get; set; } = "";
+        [MaxLength(20)] public string? Phone { get; set; }
+        [MaxLength(250)] public string? Address { get; set; }
         public string? Notes { get; set; }
-
     }
 }
