@@ -11,7 +11,7 @@ namespace DomainLayer;
 
 public interface ICustomerRepository
 {
-    Task<PagedResult<CustomerGridDto>> GetGridAsync(GridRequest r, CancellationToken ct);
+    Task<DataSourceResult> GetGridAsync(DataSourceRequest request, CancellationToken ct);
 
     Task<OperationResult<CustomerDetailDto>> GetByIdAsync(string id, CancellationToken ct);
 

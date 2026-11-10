@@ -6,5 +6,7 @@ internal static class RepositoryExtensions
 {
     public static IServiceCollection AddRepositories(this IServiceCollection services)
         => services
-            .AddScoped<IUserRepository, UserRepository>();
+            .AddScoped<IUserRepository, UserRepository>()
+            .AddScoped<ICustomerRepository, CustomerRepository>();
+
 }

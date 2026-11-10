@@ -9,7 +9,8 @@ using System.Linq.Dynamic.Core;
 
 namespace DomainLayer;
 
-internal sealed class CustomerRepository(AppDbContext db, ILogger<CustomerRepository> logger) : ICustomerRepository
+internal sealed class CustomerRepository(AppDbContext db, 
+    ILogger<CustomerRepository> logger) : ICustomerRepository
 {
     public async Task<DataSourceResult> GetGridAsync(DataSourceRequest request, CancellationToken ct)
     => await db.Customers
@@ -31,7 +32,7 @@ internal sealed class CustomerRepository(AppDbContext db, ILogger<CustomerReposi
     {
         try
         {
-            db.Customers.Add(Customer.Create(dto.Name, dto.Phone, dto.Address, dto.Notes, userId));
+            db.Customers.Add(Customer.Create(dto.Name, dto.Phone!, dto.Address!, dto.Notes!, userId));
             await db.SaveChangesAsync(ct);
             return OperationResult.Ok();
         }
