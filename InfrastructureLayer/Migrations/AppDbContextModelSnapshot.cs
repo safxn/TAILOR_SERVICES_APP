@@ -92,11 +92,8 @@ namespace InfrastructureLayer.Migrations
 
             modelBuilder.Entity("DomainLayer.Models.Customer", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Address")
                         .HasMaxLength(250)
@@ -154,6 +151,9 @@ namespace InfrastructureLayer.Migrations
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
+                    b.Property<string>("CustomerId1")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<int>("MeasurementTypeId")
                         .HasColumnType("int");
 
@@ -173,7 +173,7 @@ namespace InfrastructureLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CustomerId");
+                    b.HasIndex("CustomerId1");
 
                     b.HasIndex("MeasurementTypeId");
 
@@ -232,6 +232,9 @@ namespace InfrastructureLayer.Migrations
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
+                    b.Property<string>("CustomerId1")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<DateTime?>("DueDate")
                         .HasColumnType("datetime2");
 
@@ -250,7 +253,7 @@ namespace InfrastructureLayer.Migrations
 
                     b.HasIndex("AssignedToId");
 
-                    b.HasIndex("CustomerId");
+                    b.HasIndex("CustomerId1");
 
                     b.ToTable("Order");
                 });
@@ -442,9 +445,7 @@ namespace InfrastructureLayer.Migrations
                 {
                     b.HasOne("DomainLayer.Models.Customer", "Customer")
                         .WithMany("Measurements")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CustomerId1");
 
                     b.HasOne("DomainLayer.Models.MeasurementType", "MeasurementType")
                         .WithMany()
@@ -473,9 +474,7 @@ namespace InfrastructureLayer.Migrations
 
                     b.HasOne("DomainLayer.Models.Customer", "Customer")
                         .WithMany("Orders")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CustomerId1");
 
                     b.Navigation("AssignedTo");
 

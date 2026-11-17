@@ -8,6 +8,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <None Remove="tailor-ui\models\customer.model.ts" />
+	  <None Remove="tailor-ui\src\app\customers\customers.routes.ts" />
 	  <None Remove="tailor-ui\src\app\shared\grid-request.ts" />
 	</ItemGroup>
 
@@ -15,6 +17,7 @@
 		<Folder Include="Areas\Administration\Controllers\" /> 
 		<Folder Include="Data\" />
 		<Folder Include="RegisterServices\" />
+		<Folder Include="tailor-ui\models\" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -47,6 +50,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <TypeScriptCompile Include="tailor-ui\src\app\customers\customer.model.ts" />
+	  <TypeScriptCompile Include="tailor-ui\src\app\customers\customers.routes.ts" />
 	  <TypeScriptCompile Include="tailor-ui\src\app\shared\grid-request.ts" />
 	</ItemGroup>
 

@@ -40,6 +40,21 @@ namespace InfrastructureLayer.Data
             {
                 fk.DeleteBehavior = DeleteBehavior.Restrict;
             }
+
+            modelBuilder.Entity<Customer>(e =>
+            {
+                e.Property(x => x.Id).HasMaxLength(36).ValueGeneratedNever();
+            });
+
+            modelBuilder.Entity<Measurement>(e =>
+            {
+                e.Property(x => x.CustomerId).HasMaxLength(36);
+            });
+
+            modelBuilder.Entity<Order>(e =>
+            {
+                e.Property(x => x.CustomerId).HasMaxLength(36);
+            });
         }
 
     }
