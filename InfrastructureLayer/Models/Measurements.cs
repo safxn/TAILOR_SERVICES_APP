@@ -8,7 +8,7 @@ namespace DomainLayer.Models
     {
         public int Id { get; set; }
 
-        public int CustomerId { get; set; }
+        public string CustomerId { get; set; } = default!;
         public Customer? Customer { get; set; }
 
         public int MeasurementTypeId { get; set; }

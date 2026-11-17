@@ -122,7 +122,7 @@ namespace InfrastructureLayer.Migrations
 
                     b.HasIndex("CreatedById");
 
-                    b.ToTable("Customers");
+                    b.ToTable("Customers", (string)null);
                 });
 
             modelBuilder.Entity("DomainLayer.Models.EmployeePermission", b =>
@@ -137,7 +137,7 @@ namespace InfrastructureLayer.Migrations
 
                     b.HasIndex("PermissionId");
 
-                    b.ToTable("EmployeePermissions");
+                    b.ToTable("EmployeePermissions", (string)null);
                 });
 
             modelBuilder.Entity("DomainLayer.Models.Measurement", b =>
@@ -179,7 +179,7 @@ namespace InfrastructureLayer.Migrations
 
                     b.HasIndex("UpdatedById");
 
-                    b.ToTable("Measurement");
+                    b.ToTable("Measurement", (string)null);
                 });
 
             modelBuilder.Entity("DomainLayer.Models.MeasurementType", b =>
@@ -209,7 +209,7 @@ namespace InfrastructureLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("MeasurementType");
+                    b.ToTable("MeasurementType", (string)null);
                 });
 
             modelBuilder.Entity("DomainLayer.Models.Order", b =>
@@ -255,7 +255,7 @@ namespace InfrastructureLayer.Migrations
 
                     b.HasIndex("CustomerId1");
 
-                    b.ToTable("Order");
+                    b.ToTable("Order", (string)null);
                 });
 
             modelBuilder.Entity("DomainLayer.Models.Permission", b =>
@@ -275,7 +275,7 @@ namespace InfrastructureLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Permissions");
+                    b.ToTable("Permissions", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

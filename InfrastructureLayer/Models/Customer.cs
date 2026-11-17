@@ -21,7 +21,7 @@ namespace DomainLayer.Models;
         public string? Notes { get; private set; }
 
         // Who registered this customer (admin or employee)
-        public string CreatedById { get; private set; } = string.Empty;
+        public string ? CreatedById { get; private set; } 
         public ApplicationUser? CreatedBy { get; private set; }
 
         public DateTime CreatedAt { get; private set; } = DateTime.UtcNow;
@@ -31,7 +31,7 @@ namespace DomainLayer.Models;
         public ICollection<Order> Orders { get; private set; } = new List<Order>();
 
         #region Factory Method
-        public static Customer Create( string name, string phone, string address, string notes, string? createdById)
+        public static Customer Create( string name, string phone, string address, string notes, string? createdById =null)
         {
             return new Customer()
             {
@@ -39,7 +39,7 @@ namespace DomainLayer.Models;
                 Phone = phone,
                 Address = address,
                 Notes = notes,
-                CreatedById = createdById = string.Empty
+                CreatedById = createdById 
             };
         }
 
