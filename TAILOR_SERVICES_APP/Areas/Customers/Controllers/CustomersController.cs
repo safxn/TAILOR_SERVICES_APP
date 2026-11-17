@@ -2,6 +2,7 @@
 using DomainLayer.Common;
 using DomainLayer.Dtos;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace TAILOR_SERVICES_APP.Areas.Customers.Controllers
 {
@@ -24,7 +25,7 @@ namespace TAILOR_SERVICES_APP.Areas.Customers.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CustomerSaveDto dto, CancellationToken ct)
         {
-            var userId = "temp-user"; // replace with the logged-in user's id later
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var result = await repo.CreateAsync(dto, userId, ct);
             return result.Succeeded ? Ok() : BadRequest(new { errors = result.Errors });
         }

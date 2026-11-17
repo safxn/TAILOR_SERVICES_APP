@@ -28,7 +28,7 @@ internal sealed class CustomerRepository(AppDbContext db,
             : OperationResult<CustomerDetailDto>.Ok(new(c.Id, c.Name, c.Phone, c.Address, c.Notes));
     }
 
-    public async Task<OperationResult> CreateAsync(CustomerSaveDto dto, string userId, CancellationToken ct)
+    public async Task<OperationResult> CreateAsync(CustomerSaveDto dto, string? userId, CancellationToken ct)
     {
         try
         {

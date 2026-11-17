@@ -31,7 +31,7 @@ namespace DomainLayer.Models;
         public ICollection<Order> Orders { get; private set; } = new List<Order>();
 
         #region Factory Method
-        public static Customer Create( string name, string phone, string address, string notes, string createdById)
+        public static Customer Create( string name, string phone, string address, string notes, string? createdById)
         {
             return new Customer()
             {
@@ -39,7 +39,7 @@ namespace DomainLayer.Models;
                 Phone = phone,
                 Address = address,
                 Notes = notes,
-                CreatedById = createdById
+                CreatedById = createdById = string.Empty
             };
         }
 

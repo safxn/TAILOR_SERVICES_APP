@@ -15,7 +15,7 @@ public interface ICustomerRepository
 
     Task<OperationResult<CustomerDetailDto>> GetByIdAsync(string id, CancellationToken ct);
 
-    Task<OperationResult> CreateAsync(CustomerSaveDto dto, string userId, CancellationToken ct);
+    Task<OperationResult> CreateAsync(CustomerSaveDto dto, string? userId, CancellationToken ct);
 
     Task<OperationResult> UpdateAsync(string id, CustomerSaveDto dto, CancellationToken ct);
 
